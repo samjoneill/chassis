@@ -7,6 +7,10 @@
 	"config": {
 		"platform": {
 			"php": "8.0.2"
+		},
+		"allow-plugins": {
+			"craftcms/plugin-installer": true,
+			"yiisoft/yii2-composer": true
 		}
 	},
 	"autoload": {
