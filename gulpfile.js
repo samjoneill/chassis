@@ -13,7 +13,7 @@ const imagemin = require( 'gulp-imagemin' );
 const livereload = require( 'gulp-livereload' );
 const postcss = require( 'gulp-postcss' );
 const rename = require( 'gulp-rename' );
-const sass = require( 'gulp-sass' );
+const sass = require('gulp-sass')(require('sass'));
 const sassLint = require( 'gulp-sass-lint' );
 const rollup = require( 'rollup' );
 const { eslint } = require( 'rollup-plugin-eslint' );
@@ -23,7 +23,7 @@ const json = require( '@rollup/plugin-json' );
 const resolve = require( '@rollup/plugin-node-resolve' );
 const yaml = require( '@rollup/plugin-yaml' );
 
-sass.compiler = require( 'node-sass' );
+sass.compiler = require( 'sass' );
 
 function task_sass_lint() {
 	return src( `${source_path}/sass/{main,cookies/**/*,site/**/*}.scss` )

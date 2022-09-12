@@ -33,12 +33,12 @@
 		"gulp-livereload": "^4.0.2",
 		"gulp-postcss": "^8.0.0",
 		"gulp-rename": "^2.0.0",
-		"gulp-sass": "^4.0.2",
+		"gulp-sass": "^5.1.0",
 		"gulp-sass-lint": "^1.4.0",
-		"node-sass": "^4.13.1",
 		"node-sass-yaml-importer": "^4.0.1",
 		"rollup": "^2.3.0",
 		"rollup-plugin-eslint": "^6.0.0",
-		"rollup-plugin-uglify": "^6.0.4"
+		"rollup-plugin-uglify": "^6.0.4",
+		"sass": "^1.49.9"
 	}
 }
