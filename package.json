@@ -1,0 +1,44 @@
+{
+	"private": true,
+	"config": {
+		"production": false,
+		"templates_dir": "./templates",
+		"asset_source_path": "./raw",
+		"asset_destination_path": "./public/assets"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"IE 11"
+	],
+	"scripts": {
+		"build": "gulp all",
+		"build:js": "gulp js",
+		"build:css": "gulp css",
+		"build:img": "gulp images",
+		"build:fonts": "gulp fonts",
+		"watch": "gulp watch"
+	},
+	"dependencies": {
+		"@rollup/plugin-buble": "^0.21.1",
+		"@rollup/plugin-json": "^4.0.2",
+		"@rollup/plugin-node-resolve": "^7.1.1",
+		"@rollup/plugin-yaml": "^2.1.0",
+		"autoprefixer": "^9.7.5",
+		"csslint-stylish": "^0.0.6",
+		"focus-visible": "^5.2.0",
+		"gulp": "^4.0.2",
+		"gulp-csslint": "^1.0.1",
+		"gulp-imagemin": "^7.1.0",
+		"gulp-livereload": "^4.0.2",
+		"gulp-postcss": "^8.0.0",
+		"gulp-rename": "^2.0.0",
+		"gulp-sass": "^4.0.2",
+		"gulp-sass-lint": "^1.4.0",
+		"node-sass": "^4.13.1",
+		"node-sass-yaml-importer": "^4.0.1",
+		"rollup": "^2.3.0",
+		"rollup-plugin-eslint": "^6.0.0",
+		"rollup-plugin-uglify": "^6.0.4"
+	}
+}

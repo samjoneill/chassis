@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+
+/.env
+
+/storage/
+/vendor/
+
+/public/assets/
+/public/cpresources/
+/public/uploads/**/**
+
+/node_modules/

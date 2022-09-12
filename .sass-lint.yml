@@ -1,0 +1,67 @@
+rules:
+  bem-depth:
+    - 1
+    -
+      max-depth: 3
+  brace-style:
+    - 1
+    -
+      style: 1tbs
+      allow-single-line: false
+  class-name-format:
+    - 1
+    -
+      convention: hyphenatedbem
+      allow-leading-underscore: false
+  empty-args:
+    - 1
+    -
+      include: true
+  empty-line-between-blocks:
+    - 0
+  indentation:
+    - 1
+    -
+      size: tab
+  leading-zero:
+    - 1
+    -
+      include: true
+  mixins-before-declarations:
+    - 1
+    -
+      exclude: ['media', 'media-min', 'hi-dpi']
+  nesting-depth:
+    - 1
+    -
+      max-depth: 4
+  no-disallowed-properties:
+    - 1
+    -
+      properties:
+        - 'font-size'
+  no-qualifying-elements:
+    - 1
+    -
+      allow-element-with-attribute: true
+  no-universal-selectors:
+    - 1
+  property-sort-order:
+    - 1
+    -
+      order: alphabetical
+  property-units:
+    - 1
+    -
+      global: ['rem', 'px', 's', 'vw', 'vh']
+  space-between-parens:
+    - 1
+    -
+      include: true
+  variable-for-property:
+    - 1
+    -
+      properties:
+        - color
+        - background-color
+        - border-color

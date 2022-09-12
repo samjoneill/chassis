@@ -1,0 +1,107 @@
+@import '../variables.yml';
+
+// Misc
+	// Enable `box-sizing: content-box;` for all elements. Beware: Andy will frown upon you.
+	$alternate-box-model: false;
+
+// Typography
+	// Define font sizes and line heights here, in rems and unitless numbers respectively.
+	// If you run out of greek letters, the site probably has too many font sizes.
+	// `theta`, unit size, is applied to the body by default, and should be kept at 1.
+	$typography-sizes: (
+		alpha:   ( 2.5, 1.2 ),  // 40px
+		beta:    ( 2.25, 1.2 ), // 36px
+		gamma:   ( 2, 1.3 ),    // 32px
+		delta:   ( 1.75 ),      // 28px
+		epsilon: ( 1.5 ),       // 24px
+		zeta:    ( 1.25 ),      // 20px
+		eta:     ( 1.125 ),     // 18px
+		theta:   ( 1, 1.5 ),    // 16px
+		iota:    ( 0.875 ),     // 14px
+		kappa:   ( 0.75 ),      // 12px
+		lambda:  ( 0.5 ),       // 8px
+	);
+
+// Dimensions
+	// How wide containers will go, and how much side padding they have.
+	// These values will have different effects depending on the value of $alternate-box-model.
+	$container-max-width: 1920px;
+	$container-side-padding: 32px;
+
+// Fonts
+	// Define the site's fonts. They must be single names, not font stacks.
+	// If you're using font faces, these names can be anything you want.
+	$font-primary: 'Site Text';
+	$font-icons: 'Site Icons';
+
+	// Define font face files and styles.
+	// Add legacy: true for  [eot, woff, ttf, svg], defaults to [woff2, woff].
+	// Weight & style can be omitted, and default to normal.
+	// Change version to cache-break fonts.
+	// Syntax: 'filename': (
+	//     stack: $font-primary,
+	//     style: italic,
+	//     weight: 400,
+	//     legacy: false,
+	//     version: 1
+	// )
+	$font-faces: (
+		'site-text-regular': (
+			stack: $font-primary,
+			version: 1
+		),
+		'site-text-italic': (
+			stack: $font-primary,
+			style: italic,
+			version: 1
+		),
+		'site-text-bold': (
+			stack: $font-primary,
+			weight: bold,
+			version: 1
+		),
+		'icomoon': (
+			stack: $font-icons,
+			legacy: true,
+			version: 1
+		)
+	);
+
+// Colours
+	// Keep track of explicit colours here (use colourful names, and don't use these variables outside of this file).
+	$colour-white: #fff;
+	$colour-brand-blue: #02b6f1;
+	$colour-light-grey: #f3f3f3;
+	$colour-dark-grey: #666;
+
+	// Define implicit site colours here (don't use colourful names, use these variables elsewhere).
+	$colour-primary-text: $colour-dark-grey;
+	//$colour-secondary-text: $colour-dark-grey;
+	$colour-link: $colour-brand-blue;
+	$colour-link--hover: lighten( $colour-link, 30% );
+
+// Grid
+	// Row classes can be a combination of `grid` and `flex` classes.
+	// `flex` is used to achieve the grid effect, whilst `grid` is used for gutter spacing.
+	// Flex does not allow wrapping by default, add `flex--wrap`.
+	// If there is no gutter spacing, `grid` and `grid__item` can be ommitted.
+	// Columns have a class of `grid__item`, and any corresponding width class(es).
+	// Width class syntax: {breakpoint-id}{column-size}-{grid-size} e.g. a4-12, b2-5, c3-7.
+	// A `grid__item` must be a direct child of a `grid`.
+	// Width classes can be used without a row parent, to size other elements.
+	// Change the grid widths in raw/variables.yml
+	$grid-gutter-width-default: 32px;
+
+// Icons
+	// List your icon names and respective font codepoints here.
+	$icon-list: (
+		twitter: e600,
+		facebook: e601,
+		instagram: e602
+	);
+	// The framework provides a placeholder selector for icons; extend `%icon-pseudo` in your ::before or ::after selectors.
+	// To choose the icon, also extend the relevant icon name, e.g. `%icon-pseudo--twitter` for a twitter icon.
+	// The classes `icon` and `icon-end` are also provided, for quickly applying before and after icons.
+	// `icon icon--twitter` will display a twitter icon before an element's text.
+	// `icon-end icon-end--facebook` will display a facebook icon after an element's text.
+	// In general, use the classes for simple things like social icons, and the extends for everything else.

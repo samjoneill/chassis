@@ -1,0 +1,25 @@
+
+{% macro image( file, transform, default_alt_text, class ) -%}
+	<img{% if class is not null %} class="{{ class }}"{% endif %} src="{{ file.getUrl( transform ) }}" width="{{ file.getWidth( transform ) }}" height="{{ file.getHeight( transform ) }}" alt="{{ file.alt_text ?? default_alt_text }}">
+{%- endmacro %}
+
+{#
+	The first transform will be used as the fallback src image.
+	Use `sizes` to tell the browser how much space the image takes up at
+	different media queries, i.e.
+	"(min-width: 400px) 100vw, (min-width: 700px) 50vw, 33vw"
+	http://ericportis.com/posts/2014/srcset-sizes/
+#}
+{% macro imageSet( file, transforms, sizes, default_alt_text, class ) -%}
+	<img{% if class is not null %} class="{{ class }}"{% endif %}
+		src="{{ file.getUrl( transforms[0] ) }}"
+		srcset="
+			{%- for size in transforms -%}
+				{{ file.getUrl( size ) ~ ' ' ~ file.getWidth( size ) ~ 'w' ~ ( not loop.last ? ', ') }}
+			{%- endfor -%}
+		"
+		sizes="{{ sizes }}"
+		width="{{ file.getWidth( transforms[0] ) }}"
+		height="{{ file.getHeight( transforms[0] ) }}"
+		alt="{{ file.alt_text ?? default_alt_text }}">
+{%- endmacro %}

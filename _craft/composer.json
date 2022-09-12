@@ -1,0 +1,17 @@
+{
+	"require": {
+		"craftcms/cms": "^4.0.0",
+		"vlucas/phpdotenv": "^3.4.0",
+		"craftcms/redactor": "^3.0.0"
+	},
+	"config": {
+		"platform": {
+			"php": "8.0.2"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"modules\\": "modules/"
+		}
+	}
+}

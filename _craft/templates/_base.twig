@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head itemscope itemtype="http://schema.org/WebSite">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5">
+	<meta name="robots" content="noodp">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<link rel="shortcut icon" href="{{ alias( '@assetsUrl/img/favicon.ico' ) }}">
+	<link rel="apple-touch-icon" href="{{ alias( '@assetsUrl/img/apple-touch-icon.png' ) }}">
+
+	<link rel="stylesheet" href="{{ alias( '@assetsUrl/css/final.css' ) }}" media="screen">
+
+	<link rel="canonical" href="{{ url( craft.app.request.pathInfo ) }}" itemprop="url">
+	<meta property="og:url" content="{{ url( craft.app.request.pathInfo ) }}">
+
+	<meta name="author" content="{{ siteName }}">
+	<meta property="og:site_name" content="{{ siteName }}">
+
+	<meta property="og:type" content="website">
+
+	{% set final_description = ( seo_description is defined and seo_description|length > 0 ) ? seo_description : ( page_description is defined ? page_description : seo.seo_description ) %}
+	<meta name="description" content="{{ final_description }}">
+	<meta property="og:description" content="{{ final_description }}">
+
+	{% set final_title = ( seo_title is defined and seo_title|length > 0 ) ? seo_title : ( page_title is defined ? page_title : '' ) %}
+	{% set final_title = ( final_title is not empty ? final_title ~ ' - ' ) ~ siteName %}
+	<meta property="og:title" content="{{ final_title }}">
+	<title itemprop="name">{{ final_title }}</title>
+
+	{% if page_image is defined and page_image is not null %}
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:image" content="{{ page_image.getUrl( { width: 1200, height: 600 } ) }}">
+		<meta property="og:image" content="{{ page_image.getUrl( { width: 1200, height: 630 } ) }}">
+	{% else %}
+		<meta name="twitter:image" content="{{ alias( '@assetsUrl/img/share-square.png' ) }}">
+		<meta property="og:image" content="{{ alias( '@assetsUrl/img/share-square.png' ) }}">
+	{% endif %}
+</head>
+
+<body>
+
+<script>(function(){document.body.className+=' js';})();</script>
+
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+<header>
+	<a href="{{ siteUrl }}" aria-label="Homepage"></a>
+	<nav aria-label="Primary navigation">
+		<ul>
+			{% set site_area = craft.app.request.segments|first %}
+			{% set navigation = {
+				'home': 'Latest',
+				'news': 'News',
+				'photos': 'Photos',
+				'blog': 'Blog',
+				'about': 'About'
+			} %}
+			{% for slug, label in navigation %}
+				<li{{ ( site_area == slug ) or ( site_area == '' and slug == 'home' ) ? ' class="selected"' }}><a href="{{ url( ( slug == 'home' ? '' : slug ) ) }}">{{ label }}</a></li>
+			{% endfor %}
+		</ul>
+	</nav>
+</header>
+
+<main id="main-content">
+	{% block content %}{% endblock %}
+</main>
+
+<footer>
+	<nav aria-label="Legal pages">
+		<ul>
+			<li><a href="{{ url( 'legal/privacy' ) }}">Privacy policy</a></li>
+			<li><a href="{{ url( 'legal/cookies' ) }}">Cookie policy</a></li>
+		</ul>
+	</nav>
+</footer>
+
+<script src="{{ alias( '@assetsUrl/js/final.js' ) }}"></script>
+{% block script %}{% endblock %}
+
+</body>
+</html>

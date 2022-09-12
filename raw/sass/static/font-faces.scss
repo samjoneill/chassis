@@ -1,0 +1,32 @@
+
+@mixin font-format( $styles ) {
+	$weight: map-get( $styles, weight );
+	@if $weight == null {
+		$weight: normal;
+	}
+	$style: map-get( $styles, style );
+	@if $style == null {
+		$style: normal;
+	}
+	font-family: nth( map-get( $styles, stack ), 1 );
+	font-style: $style;
+	font-weight: $weight;
+}
+
+@each $filename, $font-styles in $font-faces {
+	@font-face {
+		@include font-format( $font-styles );
+		$legacy: map-get( $font-styles, legacy );
+		$version: map-get( $font-styles, version );
+		@if ( $legacy != null and $legacy == true ) {
+			src: url( '../fonts/#{ $filename }.eot?v=#{ $version }' );
+			src: url( '../fonts/#{ $filename }.eot?#iefix' ) format( 'embedded-opentype' ),
+			url( '../fonts/#{ $filename }.woff?v=#{ $version }' ) format( 'woff' ),
+			url( '../fonts/#{ $filename }.ttf?v=#{ $version }' ) format( 'truetype' ),
+			url( '../fonts/#{ $filename }.svg?v=#{ $version }' ) format( 'svg' );
+		} @else {
+			src: url( '../fonts/#{ $filename }.woff2?v=#{ $version }' ) format( 'woff2' ),
+			url( '../fonts/#{ $filename }.woff?v=#{ $version }' ) format( 'woff' );
+		}
+	}
+}

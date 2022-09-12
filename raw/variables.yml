@@ -1,0 +1,38 @@
+# For each breakpoint, list the id, the width, any any grid sizes you'll be using
+# Using the breakpoint id as the key, and defining the width, unit and grid sizes as below
+# NB if you're just using the breakpoint in a media query, you can leave the grid sizes empty
+# Also if units are not in px you will need to do your own conversions to px in JS
+breakpoints:
+  a:
+    width: default
+    unit: px
+    grids:
+      - 12
+  b:
+    width: 1449
+    unit: px
+    grids:
+  c:
+    width: 1279
+    unit: px
+    grids:
+  d:
+    width: 1099
+    unit: px
+    grids:
+  e:
+    width: 979
+    unit: px
+    grids:
+  f:
+    width: 799
+    unit: px
+    grids:
+  g:
+    width: 649
+    unit: px
+    grids:
+  h:
+    width: 449
+    unit: px
+    grids:
