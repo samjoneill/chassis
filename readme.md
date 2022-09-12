@@ -7,13 +7,13 @@ Use the [installer bash script](https://github.com/samjoneill/commands/blob/main
 
 ## Structure
 
-### `_craft3/`
+### `_craft/`
 
 App skeleton for Craft CMS projects.
 
 ### `raw/`
 
-The CSS framework, default javascript polyfills and libraries, and some icon fonts.
+The CSS framework, default JavaScript polyfills and libraries, and some icon fonts.
 
 ### `.eslintrc.yml` and `.sass-lint.yml`
 
