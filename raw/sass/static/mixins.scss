@@ -56,7 +56,7 @@
 
 @mixin flex-container( $width-ratio, $height-ratio ) {
 	@extend %flex-container;
-	padding-bottom: percentage( $height-ratio / $width-ratio );
+	padding-bottom: calc( $height-ratio / $width-ratio );
 }
 
 

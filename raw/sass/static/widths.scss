@@ -1,7 +1,7 @@
 
 // e.g. @include span-columns( 3, 7 );
 @mixin span-columns( $columns, $container-columns ) {
-	width: percentage( $columns / $container-columns );
+	width: calc( $columns / $container-columns );
 }
 
 @mixin generate-grid( $breakpoint-id, $grid-sizes ) {
