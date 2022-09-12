@@ -28,7 +28,6 @@
 		"csslint-stylish": "^0.0.6",
 		"focus-visible": "^5.2.0",
 		"gulp": "^4.0.2",
-		"gulp-csslint": "^1.0.1",
 		"gulp-imagemin": "^7.1.0",
 		"gulp-livereload": "^4.0.2",
 		"gulp-postcss": "^8.0.0",

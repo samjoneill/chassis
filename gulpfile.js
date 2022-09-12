@@ -8,7 +8,6 @@ const destination_path = config.asset_destination_path;
 const path = require( 'path' );
 const autoprefixer = require( 'autoprefixer' );
 const { src, dest, series, parallel, watch } = require( 'gulp' );
-const cssLint = require( 'gulp-csslint' );
 const imagemin = require( 'gulp-imagemin' );
 const livereload = require( 'gulp-livereload' );
 const postcss = require( 'gulp-postcss' );
@@ -45,24 +44,6 @@ function task_sass_process() {
 		.pipe( rename( 'final.css' ) )
 		.pipe( dest( `${destination_path}/css` ) )
 		.pipe( livereload() );
-}
-
-function task_css_lint() {
-	return src( `${destination_path}/css/final.css` )
-		.pipe( cssLint( {
-			'adjoining-classes': false,
-			'box-sizing': false,
-			'box-model': false,
-			'bulletproof-font-face': false,
-			'compatible-vendor-prefixes': false,
-			'font-sizes': false,
-			'fallback-colors': false,
-			'qualified-headings': false,
-			'unique-headings': false,
-			'order-alphabetical': false,
-			'outline-none': false,
-		} ) )
-		.pipe( cssLint.formatter( require( 'csslint-stylish' ) ) );
 }
 
 function task_js_process() {
@@ -120,7 +101,7 @@ function task_fonts_copy() {
 		.pipe( livereload() );
 }
 
-const task_css_all = parallel( task_sass_lint, series( task_sass_process, task_css_lint ) );
+const task_css_all = parallel( task_sass_lint, series( task_sass_process ) );
 const task_js_all = parallel( task_js_process, task_js_copy_vendor_solo );
 const task_images_all = task_images_process;
 const task_fonts_all = task_fonts_copy;
