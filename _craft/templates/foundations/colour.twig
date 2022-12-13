@@ -1,0 +1,33 @@
+{% set colours = [
+  'blue',
+  'green',
+  'green-step--1',
+  'green-step--2',
+  'purple',
+  'yellow',
+  'red',
+  'dark',
+  'grey',
+  'grey-step-1',
+  'grey-step-2',
+  'light-grey',
+  'light-grey-step-1',
+  'white'
+] %}
+
+<div class="colour-swatch">
+  {% for colour in colours %}
+    <div>
+      <span style="background: var(--{{ colour }}"></span><code>{{ colour }}</code>
+    </div>
+  {% endfor %}
+</div>
+
+<style>
+  .colour-swatch { display: grid; grid-gap: var(--space-s);
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+
+  .colour-swatch span { aspect-ratio: 1/1; display: block; }
+
+  .colour-swatch code { font-size: var(--step--1); }
+</style>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="alternate"
+      href="/posts/rss.xml"
+      type="application/atom+xml"
+      title="" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="stylesheet"
+      href="/assets/css/main.css?cachebust={{ alias('@cachebust') }}" />
+
+    <link rel="shortcut icon" type="image/png" href="/icon-512.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+    <link rel="apple-touch-icon"
+      href="/apple-touch-152x152.png"
+      sizes="152x152" />
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+
+    <script>
+      if (document.documentElement) { document.documentElement.className =
+      'has-js'; }
+    </script>
+
+    {% do seomatic.meta.twitterCard('summary') %}
+
+    {% hook 'seomaticRender' %}
+  </head>
+  <body>
+    {% block body %}
+
+    {% endblock %}
+
+    <script type="text/javascript"
+      src="/assets/js/main.js?cachebust={{ alias('@cachebust') }}"
+      defer="defer"></script>
+  </body>
+</html>

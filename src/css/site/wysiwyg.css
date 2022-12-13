@@ -1,0 +1,51 @@
+.wysiwyg {
+  a {
+    color: var(--blue);
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+  }
+
+  ul:not(:first-child),
+  ol:not(:first-child) {
+    margin-top: var(--space-s-m);
+  }
+
+  ul:not(:last-child),
+  ol:not(:last-child) {
+    margin-bottom: var(--space-s-m);
+  }
+
+  li {
+    margin-left: 1.3em;
+
+    & + li {
+      margin-top: var(--space-2xs);
+    }
+  }
+
+  h1:not(:first-child),
+  h2:not(:first-child) {
+    margin-top: var(--space-l-xl);
+  }
+
+  h3:not(:first-child) {
+    margin-top: var(--space-s-m);
+  }
+
+  h2 + h3:not(:first-child) {
+    margin-top: var(--space-xs);
+  }
+
+  figure:not(:first-child) {
+    margin-bottom: var(--space-m);
+    margin-top: var(--space-l);
+  }
+}

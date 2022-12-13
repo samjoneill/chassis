@@ -1,0 +1,8 @@
+{% set body = 'style="background-color: var(--dark)"' %}
+{% extends './_layouts/preview-skeleton.twig' %}
+
+{% block content %}
+  <div class="Slat constrain">
+    {{ yield|raw }}
+  </div>
+{% endblock %}

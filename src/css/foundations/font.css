@@ -1,0 +1,14 @@
+
+/* @font-face {
+  font-family: 'Example';
+  src: url('/assets/fonts/name-of-webfont.woff2') format('woff2'),
+    url('/assets/fonts/name-of-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+} */
+
+:root {
+  --font-main: -apple-system, 'Helvetica Neue', 'Segoe UI', 'Arial', sans-serif;
+  --font-heading: -apple-system, 'Helvetica Neue', 'Segoe UI', 'Arial', sans-serif;
+}

@@ -2,9 +2,12 @@
 	"require": {
 		"craftcms/cms": "^4.0.0",
 		"vlucas/phpdotenv": "^3.4.0",
-		"craftcms/redactor": "^3.0.0"
+		"craftcms/redactor": "^3.0.0",
+    "nystudio107/craft-seomatic": "^4.0.0"
 	},
 	"config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
 		"platform": {
 			"php": "8.0.2"
 		},
@@ -13,6 +16,7 @@
 			"yiisoft/yii2-composer": true
 		}
 	},
+  "prefer-stable": true,
 	"autoload": {
 		"psr-4": {
 			"modules\\": "modules/"
