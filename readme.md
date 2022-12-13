@@ -9,27 +9,20 @@ Use the [installer script](https://github.com/samjoneill/commands/blob/main/init
 
 ### `_craft/`
 
-App skeleton for Craft CMS projects.
+Application skeleton for Craft CMS, along with some handy starting templates.
 
 ### `src/`
 
-The CSS framework, default JavaScript polyfills and libraries, and some icon fonts.
+Home to the CSS, JavaScript, fonts and images used for this project.
 
 ### `gulpfile.js`
 
-Configuration for our [Gulp](https://gulpjs.com/)-based asset preprocessor. Available commands (run with `yarn [command]`):
-
-- `build` Delete all processed assets, then re-process all raw files.
-- `build:js` Re-process all raw javascript.
-- `build:css` Re-process all raw SCSS.
-- `build:img` Re-process all raw images.
-- `build:fonts` Re-process all raw fonts.
-- `watch` Reprocess files and notify livereload when a change is detected (CTRL-C to exit).
+Configuration for our [Gulp](https://gulpjs.com/)-based asset preprocessor.
 
 ### `package.json`
 
-Configuration for the framework asset preprocessor. Switch production mode on and off in here.
+Configuration for the asset preprocessor.
 
-## CSS framework
+## To-do
 
-## Javascript framework
+1. Add an application skeleton for Statamic CMS
