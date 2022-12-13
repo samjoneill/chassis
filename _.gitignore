@@ -6,8 +6,8 @@
 /storage/
 /vendor/
 
-/public/assets/
-/public/cpresources/
-/public/uploads/**/**
+/web/assets/
+/web/cpresources/
+/web/uploads/**/**
 
 /node_modules/
