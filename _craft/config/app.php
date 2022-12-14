@@ -1,27 +1,32 @@
 <?php
+/**
+ * Yii Application Config
+ *
+ * Edit this file at your own risk!
+ *
+ * The array returned by this file will get merged with
+ * vendor/craftcms/cms/src/config/app.php and app.[web|console].php, when
+ * Craft's bootstrap script is defining the configuration for the entire
+ * application.
+ *
+ * You can define custom modules and system components, and even override the
+ * built-in system components.
+ *
+ * If you want to modify the application config for *only* web requests or
+ * *only* console requests, create an app.web.php or app.console.php file in
+ * your config/ folder, alongside this one.
+ *
+ * Read more about application configuration:
+ * https://craftcms.com/docs/4.x/config/app.html
+ */
 
 use craft\helpers\App;
 
 return [
-    'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
-    'components' => [
-        'deprecator' => [
-            'throwExceptions' => YII_DEBUG,
-        ],
-        'mailer' => function () {
-            $settings = \craft\helpers\App::mailSettings();
-            $settings->transportType = \craft\mail\transportadapters\Smtp::class;
-            $settings->transportSettings = [
-                'host' => '$EMAIL_SMTP_HOSTNAME',
-                'port' => '$EMAIL_SMTP_PORT',
-                'useAuthentication' => true,
-                'username' => '$EMAIL_SMTP_USERNAME',
-                'password' => '$EMAIL_SMTP_PASSWORD',
-                'encryptionMethod' => 'tls',
-            ];
-            $config = craft\helpers\App::mailerConfig($settings);
-
-            return Craft::createObject($config);
-        },
+  'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
+  'components' => [
+    'deprecator' => [
+        'throwExceptions' => YII_DEBUG,
     ],
+  ],
 ];

@@ -1,5 +1,4 @@
 {
-    "buttons": ["bold", "italic"],
-    "pastePlainText": true,
-    "toolbarFixed": true
+  "buttons": ["bold", "italic"],
+  "toolbarFixed": true
 }
