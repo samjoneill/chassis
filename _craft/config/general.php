@@ -14,8 +14,8 @@ use craft\helpers\App;
 $ts = @file_get_contents(__DIR__ . '/../.cachebust');
 $cachebust = $ts ? trim($ts) : time();
 
-$isDev = App::env('ENVIRONMENT') === 'dev';
-$isProd = App::env('ENVIRONMENT') === 'production';
+$isDev = App::env('CRAFT_ENVIRONMENT') === 'dev';
+$isProd = App::env('CRAFT_ENVIRONMENT') === 'production';
 
 if ($isDev) {
   putenv("PATH={$_SERVER["PATH"]}:/Users/Shared/DBngin/mysql/8.0.27/bin");
