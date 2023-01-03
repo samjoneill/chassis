@@ -17,5 +17,5 @@
 		sizes="{{ sizes }}"
 		width="{{ file.getWidth( transforms[0] ) }}"
 		height="{{ file.getHeight( transforms[0] ) }}"
-		alt="{{ file.alt_text ?? default_alt_text }}">
+		alt="{{ file.alt ?? default_alt_text }}">
 {%- endmacro %}
