@@ -1,0 +1,11 @@
+/**
+ * CONTAINER
+ * Sets a max width, adds a consistent gutter and horizontally
+ * centers the contents
+*/
+
+.container {
+  max-width: var(--grid-max-width);
+  padding-inline: var(--grid-gutter);
+  margin-inline: auto;
+}

@@ -14,7 +14,7 @@ const { nodeResolve } = require('@rollup/plugin-node-resolve');
 
 gulp.task('css', () =>
   gulp
-    .src(['./src/css/main.css'])
+    .src(['./src/css/global.css'])
     .pipe(sourcemaps.init())
     .pipe(
       postcss([

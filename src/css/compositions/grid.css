@@ -1,0 +1,39 @@
+/**
+ * AUTO GRID
+ * A flexible layout that will create an auto-fill grid with
+ * configurable grid item sizes
+
+ * CUSTOM PROPERTIES AND CONFIGURATION
+ * --grid-gutter (var(--space-s-l)): This defines the space
+ * between each item.
+
+ * --grid-min-item-size (16rem): How large each item should be
+ * ideally, as a minimum.
+
+ * --grid-placement (auto-fill): Set either auto-fit or auto-fill
+ * to change how empty grid tracks are handled
+*/
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--grid-placement, auto-fill),
+    minmax(var(--grid-min-item-size, 16rem), 1fr)
+  );
+  gap: var(--grid-gutter, var(--space-s-l));
+}
+
+.grid[data-rows='masonry'] {
+  grid-template-rows: masonry;
+  align-items: start;
+}
+
+.grid[data-layout='50-50'] {
+  --grid-placement: auto-fit;
+  --grid-min-item-size: clamp(16rem, 50vw, 26rem);
+}
+
+.grid[data-layout='33-33-33'] {
+  --grid-placement: auto-fit;
+  --grid-min-item-size: clamp(16rem, 33.33333%, 26rem);
+}

@@ -17,7 +17,7 @@ Home to the CSS, JavaScript, fonts and images used for this project.
 
 ### `gulpfile.js`
 
-Configuration for our [Gulp](https://gulpjs.com/)-based asset preprocessor.
+Configuration for the [Gulp](https://gulpjs.com/)-based asset preprocessor.
 
 ### `package.json`
 
