@@ -1,6 +1,7 @@
 const fs = require('fs');
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
+const globImport = require('postcss-import-ext-glob');
 const cssImport = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssNested = require('postcss-nested');
@@ -19,6 +20,7 @@ gulp.task('css', () =>
     .pipe(
       postcss([
         postcssCustomMedia(),
+        globImport(),
         cssImport(),
         postcssNested(),
         postcssPresetEnv({
