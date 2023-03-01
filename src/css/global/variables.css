@@ -1,6 +1,6 @@
 /* Global variables */
 :root {
-  --border-radius: var(--size-step-1);
+  --border-radius: var(--step-1);
   --transition-base: 250ms ease;
   --transition-movement: 200ms linear;
   --transition-fade: 200ms ease;
@@ -10,14 +10,14 @@
 
   /**
    * EXPLICIT COLOURS
-   * Keep track of explicit colours here (use colourful names, and don't use these variables outside of this file).
+   * Define explicit site colours here (colourful names). Don't use these variables outside of this file.
    */
   --colour-white: #FFFFFF;
   --colour-black: #000000;
 
   /**
    * IMPLICIT COLOURS
-   * Define implicit site colours here (don't use colourful names, use these variables elsewhere).
+   * Define implicit site colours here (don't use colourful names). Use these variables elsewhere.
    */
   --colour-light: var(--colour-white);
   --colour-dark: var(--colour-black);
