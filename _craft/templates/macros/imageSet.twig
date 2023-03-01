@@ -8,14 +8,15 @@
 
 {% macro imageSet( file, transforms, sizes, default_alt_text, class ) -%}
 	<img{% if class is not null %} class="{{ class }}"{% endif %}
-		src="{{ file.getUrl( transforms[0] ) }}"
-		srcset="
-			{%- for size in transforms -%}
-				{{ file.getUrl( size ) ~ ' ' ~ file.getWidth( size ) ~ 'w' ~ ( not loop.last ? ', ') }}
-			{%- endfor -%}
-		"
-		sizes="{{ sizes }}"
-		width="{{ file.getWidth( transforms[0] ) }}"
-		height="{{ file.getHeight( transforms[0] ) }}"
-		alt="{{ file.alt ?? default_alt_text }}">
+    src="{{ file.getUrl( transforms[0] ) }}"
+    srcset="
+      {%- for size in transforms -%}
+        {{ file.getUrl( size ) ~ ' ' ~ file.getWidth( size ) ~ 'w' ~ ( not loop.last ? ', ') }}
+      {%- endfor -%}
+    "
+    sizes="{{ sizes }}"
+    width="{{ file.getWidth( transforms[0] ) }}"
+    height="{{ file.getHeight( transforms[0] ) }}"
+    alt="{{ file.alt ?? default_alt_text }}"
+    loading="lazy">
 {%- endmacro %}
