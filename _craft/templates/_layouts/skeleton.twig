@@ -24,10 +24,6 @@
       if (document.documentElement) { document.documentElement.className =
       'has-js'; }
     </script>
-
-    {% do seomatic.meta.twitterCard('summary') %}
-
-    {% hook 'seomaticRender' %}
   </head>
   <body>
     {% block body %}
