@@ -1,11 +1,10 @@
 const fs = require('fs');
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
-const globImport = require('postcss-import-ext-glob');
-const cssImport = require('postcss-import');
+const postcssGlobImport = require('postcss-import-ext-glob');
+const postcssImport = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssNested = require('postcss-nested');
-const postcssCustomMedia = require('postcss-custom-media');
 const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 
@@ -19,9 +18,8 @@ gulp.task('css', () =>
     .pipe(sourcemaps.init())
     .pipe(
       postcss([
-        postcssCustomMedia(),
-        globImport(),
-        cssImport(),
+        postcssGlobImport(),
+        postcssImport(),
         postcssNested(),
         postcssPresetEnv({
           stage: 2,
