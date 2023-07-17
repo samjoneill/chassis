@@ -9,18 +9,10 @@
   --tracking-s: -0.075ch;
 
   /**
-   * EXPLICIT COLOURS
-   * Define explicit site colours here (colourful names). Don't use these variables outside of this file.
+   * COLOURS
    */
   --colour-white: #FFFFFF;
   --colour-black: #000000;
-
-  /**
-   * IMPLICIT COLOURS
-   * Define implicit site colours here (don't use colourful names). Use these variables elsewhere.
-   */
-  --colour-light: var(--colour-white);
-  --colour-dark: var(--colour-black);
 
   /**
    * FONT FAMILIES

@@ -4,8 +4,8 @@
  */
 
 body {
-  background: var(--colour-light);
-  color: var(--colour-dark);
+  background: var(--colour-white);
+  color: var(--colour-black);
   font-family: var(--font-main);
   font-size: var(--step-0);
   letter-spacing: var(--tracking);
@@ -99,6 +99,6 @@ main:focus {
 
 /* Base selection styles that invert whatever colours are rendered */
 ::selection {
-  background: var(--colour-dark);
-  color: var(--colour-light);
+  background: var(--colour-black);
+  color: var(--colour-white);
 }
