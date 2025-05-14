@@ -1,84 +1,136 @@
-const fs = require('fs');
-const gulp = require('gulp');
-const postcss = require('gulp-postcss');
-const postcssGlobImport = require('postcss-import-ext-glob');
-const postcssImport = require('postcss-import');
-const postcssPresetEnv = require('postcss-preset-env');
-const postcssNested = require('postcss-nested');
-const cssnano = require('gulp-cssnano');
-const sourcemaps = require('gulp-sourcemaps');
+import { src, dest, parallel, series, watch } from "gulp";
+import postcss from "gulp-postcss";
+import postcssGlobImport from "postcss-import-ext-glob";
+import postcssImport from "postcss-import";
+import autoprefixer from "autoprefixer";
+import cssnano from "cssnano";
+import sourcemaps from "gulp-sourcemaps";
+import concat from "gulp-concat";
+import imagemin from "gulp-imagemin";
+import { deleteAsync } from "del";
+import fs from "fs";
+import path from "path";
 
-const { rollup } = require('rollup');
-const { babel } = require('@rollup/plugin-babel');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
+// Rollup plugins
+import { rollup } from "rollup";
+import babel from "@rollup/plugin-babel";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import terser from "@rollup/plugin-terser";
 
-gulp.task('css', () =>
-  gulp
-    .src(['./src/css/global.css'])
+// File path variables
+const paths = {
+  styles: {
+    src: "src/css/**/*.css",
+    dest: "web/assets/css/",
+  },
+  scripts: {
+    src: "src/js/main.js",
+    dest: "web/assets/js/",
+  },
+  vendor: {
+    src: "src/js/vendor/**/*.js",
+    dest: "web/assets/js/vendor/",
+  },
+  images: {
+    src: "src/img/**/*.{jpg,jpeg,png,svg,gif}",
+    dest: "web/assets/img/",
+  },
+  fonts: {
+    src: "src/fonts/**/*",
+    dest: "web/assets/fonts/",
+  },
+};
+
+// Clean output folder
+function clean() {
+  return deleteAsync(["web/assets"]);
+}
+
+// Process CSS
+function styles() {
+  return src("src/css/global.css")
     .pipe(sourcemaps.init())
     .pipe(
-      postcss([
-        postcssGlobImport(),
-        postcssImport(),
-        postcssNested(),
-        postcssPresetEnv({
-          stage: 2,
-          features: {
-            'nesting-rules': true,
-          },
-        }),
-      ])
+      postcss([postcssGlobImport(), postcssImport(), autoprefixer(), cssnano()])
     )
-    .pipe(cssnano())
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./web/assets/css'))
-);
+    .pipe(concat("main.css"))
+    .pipe(sourcemaps.write("."))
+    .pipe(dest(paths.styles.dest));
+}
 
-gulp.task('js', () => {
-  return rollup({
-    input: './src/js/main.js',
+// Process JavaScript
+async function scripts() {
+  // Ensure destination directory exists
+  if (!fs.existsSync(paths.scripts.dest)) {
+    fs.mkdirSync(paths.scripts.dest, { recursive: true });
+  }
+
+  // Bundle with Rollup
+  const bundle = await rollup({
+    input: paths.scripts.src,
     plugins: [
-      nodeResolve(),
+      resolve({ browser: true }),
+      commonjs(),
       babel({
-        presets: [['@babel/preset-env']],
-        babelHelpers: 'bundled',
+        babelHelpers: "bundled",
+        presets: ["@babel/preset-env"],
+        exclude: "node_modules/**",
       }),
+      terser(),
     ],
-  }).then((bundle) => {
-    return bundle.write({
-      file: './web/assets/js/main.js',
-      format: 'cjs',
-      name: 'main',
-      sourcemap: true,
-      compact: true,
-    });
   });
-});
 
-gulp.task('fonts', () =>
-  gulp.src(['./src/fonts/*']).pipe(gulp.dest('./web/assets/fonts'))
-);
+  // Generate output
+  await bundle.write({
+    file: path.join(paths.scripts.dest, "bundle.js"),
+    format: "iife",
+    sourcemap: true,
+    name: "bundle",
+  });
 
-gulp.task('images', () =>
-  gulp.src(['./src/img/**/*']).pipe(gulp.dest('./web/assets/img'))
-);
+  // Close the bundle
+  await bundle.close();
+}
 
-gulp.task('watch', function () {
-  gulp.task(
-    'default',
-    gulp.parallel('css', 'fonts', 'js', 'images')
-  );
-  gulp.watch('./src/css/**/*.css', gulp.series('css'));
-  gulp.watch('./src/fonts/*', gulp.series('fonts'));
-  gulp.watch('./src/img/**/*', gulp.series('images'));
-  gulp.watch('./src/js/*.js', gulp.series('js'));
-});
+// Process vendor JavaScript
+function vendor() {
+  return src(paths.vendor.src).pipe(dest(paths.vendor.dest));
+}
 
-gulp.task('cachebust', function (done) {
-  return fs.writeFile('./.cachebust', Date.now().toString(), done);
-});
+// Optimize images
+function images() {
+  return src(paths.images.src).pipe(imagemin()).pipe(dest(paths.images.dest));
+}
 
-gulp.task(
-  'default',
-  gulp.parallel('css', 'fonts', 'js', 'images', 'cachebust')
+// Copy fonts
+function fonts() {
+  return src(paths.fonts.src, { encoding: false }).pipe(dest(paths.fonts.dest));
+}
+
+// Define watch task
+function watchFiles(cb) {
+  watch(paths.styles.src, styles);
+  watch(paths.scripts.src, scripts);
+  watch(paths.images.src, images);
+  watch(paths.fonts.src, fonts);
+  cb();
+}
+
+// Export tasks
+export { clean };
+export { styles };
+export { scripts };
+export { vendor };
+export { images };
+export { fonts };
+export { watchFiles };
+
+// Create default task
+export default series(clean, parallel(styles, scripts, vendor, images, fonts));
+
+// Build task
+export const build = series(
+  clean,
+  parallel(styles, scripts, vendor, images, fonts)
 );
