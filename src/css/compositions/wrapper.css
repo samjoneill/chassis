@@ -1,0 +1,5 @@
+.wrapper {
+  margin-inline: auto;
+  max-width: var(--grid-max-width);
+  padding-inline: var(--grid-gutter);
+}

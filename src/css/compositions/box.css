@@ -1,0 +1,24 @@
+.box {
+  /* Configuration */
+  --box-color-bg: var(--color-light);
+  --box-color-text: var(--color-dark);
+  --box-padding: var(--space-s);
+
+  /* Styling */
+  background-color: var(--box-color-bg);
+  border: 0 solid;
+  color: var(--box-color-text);
+  outline: var(--border-thin) solid transparent;
+  outline-offset: calc(var(--border-thin) * -1);
+  padding: var(--box-padding);
+}
+
+.box:is(a) {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+}
+
+.box *:not([class]) {
+  color: inherit;
+}

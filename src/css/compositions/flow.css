@@ -1,0 +1,35 @@
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+.flow[data-flow="3xs"] > * + * {
+  --flow-space: var(--space-3xs);
+}
+
+.flow[data-flow="2xs"] > * + * {
+  --flow-space: var(--space-2xs);
+}
+
+.flow[data-flow="xs"] > * + * {
+  --flow-space: var(--space-xs);
+}
+
+.flow[data-flow="s"] > * + * {
+  --flow-space: var(--space-s);
+}
+
+.flow[data-flow="m"] > * + * {
+  --flow-space: var(--space-m);
+}
+
+.flow[data-flow="l"] > * + * {
+  --flow-space: var(--space-l);
+}
+
+.flow[data-flow="xl"] > * + * {
+  --flow-space: var(--space-xl);
+}
+
+.flow[data-flow="2xl"] > * + * {
+  --flow-space: var(--space-2xl);
+}
