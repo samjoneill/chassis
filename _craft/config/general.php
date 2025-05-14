@@ -11,9 +11,6 @@
 
 use craft\helpers\App;
 
-$ts = @file_get_contents(__DIR__ . '/../.cachebust');
-$cachebust = $ts ? trim($ts) : time();
-
 $isDev = App::env('CRAFT_ENVIRONMENT') === 'dev';
 $isProd = App::env('CRAFT_ENVIRONMENT') === 'production';
 
@@ -44,8 +41,7 @@ return [
   'verificationCodeDuration' => 432000,
   'aliases' => [
     '@web' => App::env('DEFAULT_SITE_URL'),
-    '@webroot' => dirname(__DIR__) . '/web',
-    '@cachebust' => $cachebust
+    '@webroot' => dirname(__DIR__) . '/web'
   ],
   'defaultSearchTermOptions' => [
     'subLeft' => true,
