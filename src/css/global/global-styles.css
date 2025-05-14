@@ -8,8 +8,7 @@ body {
   color: var(--color-dark);
   font-family: var(--font-main);
   font-size: var(--step-0);
-  letter-spacing: var(--tracking);
-  line-height: 1.4;
+  line-height: var(--line-height-default);
 }
 
 /* Base typesetting */
@@ -18,8 +17,8 @@ h2,
 h3,
 h4 {
   font-family: var(--font-heading);
-  letter-spacing: var(--tracking-s);
-  line-height: 1;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-single);
 }
 
 h1 {
@@ -62,7 +61,7 @@ blockquote:not([class]) {
 blockquote:not([class]) p:last-of-type {
   font-family: var(--font-main);
   font-size: var(--step-1);
-  font-weight: normal;
+  font-weight: var(--font-weight-normal);
 }
 
 svg {
