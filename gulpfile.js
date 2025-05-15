@@ -6,7 +6,6 @@ import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
 import sourcemaps from "gulp-sourcemaps";
 import concat from "gulp-concat";
-import imagemin from "gulp-imagemin";
 import { deleteAsync } from "del";
 import fs from "fs";
 import path from "path";
@@ -100,7 +99,7 @@ function vendor() {
 
 // Optimize images
 function images() {
-  return src(paths.images.src).pipe(imagemin()).pipe(dest(paths.images.dest));
+  return src(paths.images.src).pipe(dest(paths.images.dest));
 }
 
 // Copy fonts
