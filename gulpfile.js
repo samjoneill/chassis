@@ -51,7 +51,7 @@ function styles() {
   return src('src/assets/css/global.css')
     .pipe(sourcemaps.init())
     .pipe(postcss([
-      postcssGlobImport(),
+      postcssGlobImport({ allowEmpty: true }),
       postcssImport(),
       autoprefixer(),
       cssnano()
