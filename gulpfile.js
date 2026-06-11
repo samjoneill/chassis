@@ -1,60 +1,64 @@
-import { src, dest, parallel, series, watch } from "gulp";
-import postcss from "gulp-postcss";
-import postcssGlobImport from "postcss-import-ext-glob";
-import postcssImport from "postcss-import";
-import autoprefixer from "autoprefixer";
-import cssnano from "cssnano";
-import sourcemaps from "gulp-sourcemaps";
-import concat from "gulp-concat";
-import { deleteAsync } from "del";
-import fs from "fs";
-import path from "path";
+import { src, dest, parallel, series, watch } from 'gulp';
+import postcss from 'gulp-postcss';
+import postcssGlobImport from 'postcss-import-ext-glob';
+import postcssImport from 'postcss-import';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import sourcemaps from 'gulp-sourcemaps';
+import concat from 'gulp-concat';
+import imagemin from 'gulp-imagemin';
+import { deleteAsync } from 'del';
+import fs from 'fs';
+import path from 'path';
 
 // Rollup plugins
-import { rollup } from "rollup";
-import babel from "@rollup/plugin-babel";
-import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import terser from "@rollup/plugin-terser";
+import { rollup } from 'rollup';
+import babel from '@rollup/plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import terser from '@rollup/plugin-terser';
 
 // File path variables
 const paths = {
   styles: {
-    src: "src/css/**/*.css",
-    dest: "web/assets/css/",
+    src: 'src/assets/css/**/*.css',
+    dest: 'web/assets/css/'
   },
   scripts: {
-    src: "src/js/main.js",
-    dest: "web/assets/js/",
+    src: 'src/assets/js/main.js',
+    dest: 'web/assets/js/'
   },
   vendor: {
-    src: "src/js/vendor/**/*.js",
-    dest: "web/assets/js/vendor/",
+    src: 'src/assets/js/vendor/**/*.js',
+    dest: 'web/assets/js/vendor/'
   },
   images: {
-    src: "src/img/**/*.{jpg,jpeg,png,svg,gif}",
-    dest: "web/assets/img/",
+    src: 'src/assets/images/**/*.{jpg,jpeg,png,svg,gif}',
+    dest: 'web/assets/images/'
   },
   fonts: {
-    src: "src/fonts/**/*",
-    dest: "web/assets/fonts/",
-  },
+    src: 'src/assets/fonts/**/*',
+    dest: 'web/assets/fonts/'
+  }
 };
 
 // Clean output folder
 function clean() {
-  return deleteAsync(["web/assets"]);
+  return deleteAsync(['web/assets']);
 }
 
 // Process CSS
 function styles() {
-  return src("src/css/global.css")
+  return src('src/assets/css/global.css')
     .pipe(sourcemaps.init())
-    .pipe(
-      postcss([postcssGlobImport(), postcssImport(), autoprefixer(), cssnano()])
-    )
-    .pipe(concat("main.css"))
-    .pipe(sourcemaps.write("."))
+    .pipe(postcss([
+      postcssGlobImport(),
+      postcssImport(),
+      autoprefixer(),
+      cssnano()
+    ]))
+    .pipe(concat('main.css'))
+    .pipe(sourcemaps.write('.'))
     .pipe(dest(paths.styles.dest));
 }
 
@@ -72,20 +76,20 @@ async function scripts() {
       resolve({ browser: true }),
       commonjs(),
       babel({
-        babelHelpers: "bundled",
-        presets: ["@babel/preset-env"],
-        exclude: "node_modules/**",
+        babelHelpers: 'bundled',
+        presets: ['@babel/preset-env'],
+        exclude: 'node_modules/**'
       }),
-      terser(),
-    ],
+      terser()
+    ]
   });
 
   // Generate output
   await bundle.write({
-    file: path.join(paths.scripts.dest, "bundle.js"),
-    format: "iife",
+    file: path.join(paths.scripts.dest, 'bundle.js'),
+    format: 'iife',
     sourcemap: true,
-    name: "bundle",
+    name: 'bundle'
   });
 
   // Close the bundle
@@ -94,17 +98,21 @@ async function scripts() {
 
 // Process vendor JavaScript
 function vendor() {
-  return src(paths.vendor.src).pipe(dest(paths.vendor.dest));
+  return src(paths.vendor.src)
+    .pipe(dest(paths.vendor.dest));
 }
 
 // Optimize images
 function images() {
-  return src(paths.images.src).pipe(dest(paths.images.dest));
+  return src(paths.images.src)
+    .pipe(imagemin())
+    .pipe(dest(paths.images.dest));
 }
 
 // Copy fonts
 function fonts() {
-  return src(paths.fonts.src, { encoding: false }).pipe(dest(paths.fonts.dest));
+  return src(paths.fonts.src, { encoding: false })
+    .pipe(dest(paths.fonts.dest));
 }
 
 // Define watch task
@@ -126,7 +134,10 @@ export { fonts };
 export { watchFiles };
 
 // Create default task
-export default series(clean, parallel(styles, scripts, vendor, images, fonts));
+export default series(
+  clean,
+  parallel(styles, scripts, vendor, images, fonts)
+);
 
 // Build task
 export const build = series(
