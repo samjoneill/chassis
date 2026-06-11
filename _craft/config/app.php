@@ -17,16 +17,11 @@
  * your config/ folder, alongside this one.
  *
  * Read more about application configuration:
- * https://craftcms.com/docs/4.x/config/app.html
+ * @link https://craftcms.com/docs/5.x/reference/config/app.html
  */
 
 use craft\helpers\App;
 
 return [
-  'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
-  'components' => [
-    'deprecator' => [
-        'throwExceptions' => YII_DEBUG,
-    ],
-  ],
+    'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
 ];
