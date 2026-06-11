@@ -20,23 +20,23 @@ import terser from '@rollup/plugin-terser';
 // File path variables
 const paths = {
   styles: {
-    src: 'src/assets/css/**/*.css',
+    src: 'src/css/**/*.css',
     dest: 'web/assets/css/'
   },
   scripts: {
-    src: 'src/assets/js/main.js',
+    src: 'src/js/main.js',
     dest: 'web/assets/js/'
   },
   vendor: {
-    src: 'src/assets/js/vendor/**/*.js',
+    src: 'src/js/vendor/**/*.js',
     dest: 'web/assets/js/vendor/'
   },
   images: {
-    src: 'src/assets/images/**/*.{jpg,jpeg,png,svg,gif}',
+    src: 'src/images/**/*.{jpg,jpeg,png,svg,gif}',
     dest: 'web/assets/images/'
   },
   fonts: {
-    src: 'src/assets/fonts/**/*',
+    src: 'src/fonts/**/*',
     dest: 'web/assets/fonts/'
   }
 };
