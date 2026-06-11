@@ -48,7 +48,7 @@ function clean() {
 
 // Process CSS
 function styles() {
-  return src('src/assets/css/global.css')
+  return src('src/css/global.css')
     .pipe(sourcemaps.init())
     .pipe(postcss([
       postcssGlobImport({ allowEmpty: true }),
