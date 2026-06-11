@@ -32,7 +32,7 @@ const paths = {
     dest: 'web/assets/js/vendor/'
   },
   images: {
-    src: 'src/img/**/*.{jpg,jpeg,png,svg,gif}',
+    src: 'src/img/**/*.{jpg,jpeg,png,svg,gif,webp}',
     dest: 'web/assets/images/'
   },
   fonts: {
