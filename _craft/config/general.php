@@ -35,7 +35,7 @@ return GeneralConfig::create()
     ->preloadSingles()
     ->preventUserEnumeration()
     ->previewTokenDuration(5184000) // 60 days
-    ->securityKey(App::env('SECURITY_KEY'))
+    ->securityKey(App::env('CRAFT_SECURITY_KEY'))
     ->sendPoweredByHeader(false)
     ->timezone('Europe/London')
     ->verificationCodeDuration(432000)
