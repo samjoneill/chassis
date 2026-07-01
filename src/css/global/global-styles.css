@@ -38,20 +38,6 @@ h4 {
   font-size: var(--step-2);
 }
 
-/* Set line lengths */
-p,
-li,
-blockquote:not([class]) {
-  max-width: 50ch;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  max-width: 20ch;
-}
-
 /* More generic elements */
 blockquote:not([class]) {
   font-family: var(--font-main);
