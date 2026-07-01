@@ -6,6 +6,7 @@
 body {
   background: var(--color-light);
   color: var(--color-dark);
+  container-type: inline-size;
   font-family: var(--font-main);
   font-size: var(--step-0);
   line-height: var(--line-height-default);
