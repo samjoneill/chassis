@@ -1,0 +1,25 @@
+{#
+  Accordion
+  Expandable disclosure sections using the native <details> element.
+  No JavaScript required.
+
+  items  array  Array of objects, each with `title` (string) and `content` (string).
+
+  {% include 'components/_accordion' with {
+    items: [
+      { title: 'First section', content: 'Content for the first section.' },
+      { title: 'Second section', content: 'Content for the second section.' }
+    ]
+  } only %}
+#}
+<div class="u-accordion">
+  {% for item in items %}
+  <details class="u-accordion__item">
+    <summary class="u-accordion__header">
+      {{ item.title }}
+      {% include 'components/_icon' with { id: 'chevron-down' } only %}
+    </summary>
+    <div class="u-accordion__content">{{ item.content }}</div>
+  </details>
+  {% endfor %}
+</div>

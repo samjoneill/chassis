@@ -1,0 +1,18 @@
+{#
+  Statistic
+  A prominent figure and description pair for highlighting key data points.
+
+  figure       string  The main statistic value (e.g. '94%' or '2,400+').
+  description  string  A short label describing the statistic.
+  style        string  Optional. Visual style. One of: default, brand, dark. Default: default.
+
+  {% include 'components/_statistic' with {
+    figure: '94%',
+    description: 'Client satisfaction rate',
+    style: 'brand'
+  } only %}
+#}
+<div class="u-statistic" data-statistic-style="{{ style|default('default') }}">
+  <p class="u-statistic__figure">{{ figure }}</p>
+  <p class="u-statistic__description">{{ description }}</p>
+</div>

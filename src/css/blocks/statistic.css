@@ -1,0 +1,45 @@
+.u-statistic {
+  --statistic-figure-color: var(--color-brand);
+  --statistic-description-color: var(--color-brand);
+  --statistic-padding-y: var(--space-s);
+  --statistic-gap: var(--space-2xs);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--statistic-gap);
+  padding-block: var(--statistic-padding-y);
+}
+
+.u-statistic[data-statistic-style='default'] {
+  border-block-start: 1px solid var(--color-brand);
+}
+
+.u-statistic[data-statistic-style='brand'] {
+  --statistic-figure-color: var(--color-light);
+  --statistic-description-color: var(--color-light);
+
+  background-color: var(--color-brand);
+  padding-inline: var(--space-s);
+}
+
+.u-statistic[data-statistic-style='dark'] {
+  --statistic-figure-color: var(--color-light);
+  --statistic-description-color: var(--color-light);
+
+  background-color: var(--color-dark);
+  padding-inline: var(--space-s);
+}
+
+.u-statistic__figure {
+  color: var(--statistic-figure-color);
+  font-size: var(--step-5);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-condensed);
+}
+
+.u-statistic__description {
+  color: var(--statistic-description-color);
+  font-size: var(--step-0);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-condensed);
+}

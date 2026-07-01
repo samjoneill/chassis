@@ -1,0 +1,27 @@
+{#
+  Field Group
+  A fieldset wrapper for grouping related inputs (checkboxes, radios).
+  Use with {% embed %} to pass child inputs via the `options` block.
+
+  legend_text  string  The visible group label, rendered as a <legend>.
+  hint_text    string  Optional. Supporting hint text shown below the legend.
+
+  {% embed 'components/_field-group' with {
+    legend_text: 'Preferred contact method',
+    hint_text: 'Select one option.'
+  } only %}
+    {% block options %}
+      {% include 'components/_radio' with { value: 'contact-email', label: 'Email', name: 'contact-method' } only %}
+      {% include 'components/_radio' with { value: 'contact-phone', label: 'Phone', name: 'contact-method' } only %}
+    {% endblock %}
+  {% endembed %}
+#}
+<fieldset class="u-field-group">
+  <legend class="u-label">{{ legend_text }}</legend>
+  {% if hint_text|default('') %}
+    <p class="u-hint">{{ hint_text }}</p>
+  {% endif %}
+  <div class="u-field-group__options">
+    {% block options %}{% endblock %}
+  </div>
+</fieldset>

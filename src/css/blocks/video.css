@@ -1,0 +1,14 @@
+.u-video__embed-wrapper {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.u-video__embed {
+  border: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.u-video > .u-caption {
+  margin-block-start: var(--space-2xs);
+}

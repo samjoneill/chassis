@@ -1,0 +1,63 @@
+.u-hero {
+  --hero-bg-color: var(--color-brand);
+  --hero-text: var(--color-light);
+  --hero-action-color: var(--color-brand--tint-90, #f1edfd);
+  background-color: var(--hero-bg-color);
+  padding-block: var(--space-xl-2xl);
+  position: relative;
+}
+
+.u-hero::before {
+  background-color: var(--hero-bg-color);
+  content: '';
+  inset: 0;
+  opacity: 0.9;
+  position: absolute;
+  z-index: 1;
+}
+
+.u-hero__bg-image {
+  block-size: 100%;
+  inset: 0;
+  object-fit: cover;
+  pointer-events: none;
+  position: absolute;
+  inline-size: 100%;
+  z-index: 0;
+}
+
+.wrapper {
+  /* padding-inline: var(--space-s-3xl); */
+  position: relative;
+  z-index: 2;
+}
+
+.u-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+}
+
+.u-hero__heading {
+  color: var(--hero-text);
+  font-size: var(--step-5);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-condensed);
+  margin: 0;
+}
+
+.u-hero__lead {
+  color: var(--hero-text);
+  font-size: var(--step-1);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  max-inline-size: 50ch;
+}
+
+.u-hero .u-link {
+  --link-color: var(--color-brand--tint-45);
+  --link-color-hover: var(--color-light);
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+}

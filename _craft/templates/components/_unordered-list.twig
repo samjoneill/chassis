@@ -1,0 +1,19 @@
+{#
+  Unordered List
+  A bulleted list with branded marker colour.
+
+  items  array  Array of strings, one per list item.
+
+  {% include 'components/_unordered-list' with {
+    items: [
+      'Free initial consultation',
+      'Dedicated account manager',
+      'Monthly progress reports'
+    ]
+  } only %}
+#}
+<ul class="u-unordered-list">
+  {% for item in items %}
+    <li class="u-unordered-list__item">{{ item }}</li>
+  {% endfor %}
+</ul>

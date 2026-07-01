@@ -1,0 +1,42 @@
+{#
+  Pagination
+  A navigation component for paging through a list of results.
+
+  pages        number  Total number of pages.
+  current_page number  The currently active page number (1-based).
+  prev_href    string  Optional. URL for the previous page link. Default: #.
+  next_href    string  Optional. URL for the next page link. Default: #.
+  page_hrefs   object  Optional. Object keyed by page number mapping to page URLs.
+
+  {% include 'components/_pagination' with {
+    pages: pageInfo.total_pages,
+    current_page: pageInfo.current_page,
+    prev_href: pageInfo.prev_url,
+    next_href: pageInfo.next_url,
+    page_hrefs: pageInfo.page_urls
+  } only %}
+#}
+<nav class="u-pagination" aria-label="Pagination">
+  <ol class="u-pagination__list">
+    <li>
+      <a href="{{ prev_href|default('#') }}" class="u-pagination__prev">
+        {% include 'components/_icon' with { id: 'arrow-left' } only %}
+        <span>Previous</span>
+      </a>
+    </li>
+    {% for i in 1..pages %}
+      <li>
+        <a
+          href="{{ page_hrefs[i]|default('#') }}"
+          class="u-pagination__link"
+          {% if i == current_page %}aria-current="page"{% endif %}>{{ i }}</a>
+      </li>
+    {% endfor %}
+    <li>
+      <a href="{{ next_href|default('#') }}" class="u-pagination__next">
+        <span>Next</span>
+        {% include 'components/_icon' with { id: 'arrow-right' } only %}
+      </a>
+    </li>
+  </ol>
+</nav>

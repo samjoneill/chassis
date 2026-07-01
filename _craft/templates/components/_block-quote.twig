@@ -1,0 +1,13 @@
+{#
+  Block Quote
+  An inline quotation with a branded left border.
+
+  quote  string  The quoted text.
+
+  {% include 'components/_block-quote' with {
+    quote: 'Design is not just what it looks like. Design is how it works.'
+  } only %}
+#}
+<blockquote class="u-block-quote">
+  <p>{{ quote }}</p>
+</blockquote>

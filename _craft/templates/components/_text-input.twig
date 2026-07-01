@@ -1,0 +1,35 @@
+{#
+  Text Input
+  A single-line text input with label and optional hint and error state.
+
+  id                 string   The input id and name attribute.
+  label_text         string   The visible label text.
+  input_type         string   Optional. HTML input type (text, email, tel, etc.). Default: text.
+  input_placeholder  string   Optional. Placeholder text for the input.
+  hint_text          string   Optional. Supporting hint text shown below the label.
+  disabled           boolean  Optional. Disables the input. Default: false.
+  has_error          boolean  Optional. Applies error styles. Default: false.
+  error_message      string   Optional. Error message shown when has_error is true. Default: 'Error message text'.
+
+  {% include 'components/_text-input' with {
+    id: 'email',
+    label_text: 'Email address',
+    input_type: 'email'
+  } only %}
+#}
+<div>
+  <label class="u-label" for="{{ id }}">{{ label_text }}</label>
+  {% if hint_text|default('') %}
+    <p class="u-hint">{{ hint_text }}</p>
+  {% endif %}
+  <input
+    class="u-text-input{% if has_error|default(false) %} u-text-input--error{% endif %}"
+    type="{{ input_type|default('text') }}"
+    id="{{ id }}"
+    name="{{ id }}"
+    {% if input_placeholder|default('') %}placeholder="{{ input_placeholder }}"{% endif %}
+    {% if disabled|default(false) %}disabled{% endif %}>
+  {% if has_error|default(false) %}
+    <p class="u-text-input-error">{{ error_message|default('Error message text') }}</p>
+  {% endif %}
+</div>

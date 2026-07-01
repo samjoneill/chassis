@@ -1,0 +1,13 @@
+{#
+  Label
+  A styled <label> element for associating with a form input.
+
+  text  string  The visible label text.
+  id    string  The id of the associated input (used as the `for` attribute).
+
+  {% include 'components/_label' with {
+    text: 'Email address',
+    id: 'email'
+  } only %}
+#}
+<label class="u-label" for="{{ id }}">{{ text }}</label>

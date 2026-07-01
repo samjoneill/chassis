@@ -1,0 +1,87 @@
+/* https://piccalil.li/blog/how-i-build-a-button-component/ */
+
+.u-button {
+  /* Configuration */
+  --button-padding: var(--space-s);
+  --button-gap: var(--space-2xs);
+  --button-bg: var(--color-brand);
+  --button-color: var(--color-light);
+  --button-text-size: var(--step-0);
+  --button-border-width: 1px;
+  --button-border-style: solid;
+  --button-border-color: var(--color-brand);
+  --button-radius: 0;
+
+  --button-hover-bg: var(--color-brand--shade-60);
+  --button-hover-color: var(--color-light);
+  --button-hover-border-color: var(--color-brand--shade-60);
+
+  --button-outline-width: 2px;
+  --button-outline-style: solid;
+  --button-outline-color: var(--color-utility-orange);
+  --button-outline-offset: 2px;
+
+  /* Layout and spacing */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--button-gap);
+  padding: var(--button-padding);
+
+  /* Colors */
+  background: var(--button-bg);
+  color: var(--button-color);
+
+  /* Stroke and radius */
+  border-width: var(--button-border-width);
+  border-style: var(--button-border-style);
+  border-color: var(--button-border-color);
+  border-radius: var(--button-radius);
+
+  /* Typography */
+  text-decoration: none;
+  font-size: var(--button-text-size);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-condensed);
+
+  /* Interactive */
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.u-button svg {
+  flex: none;
+  block-size: 1.2em;
+  inline-size: 1.2em;
+}
+
+.u-button:hover,
+.u-button:focus-visible {
+  background: var(--button-hover-bg);
+  border-color: var(--button-hover-border-color);
+  color: var(--button-hover-color);
+}
+
+.u-button:focus-visible {
+  outline-width: var(--button-outline-width, var(--button-border-width));
+  outline-style: var(--button-outline-style, var(--button-border-style));
+  outline-color: var(--button-outline-color, var(--button-border-color));
+  outline-offset: var(--button-outline-offset, var(--button-border-width));
+}
+
+.u-button:active {
+  background-color: var(--button-bg);
+  transform: scale(98%);
+}
+
+.u-button[data-ghost-button] {
+  --button-bg: transparent;
+  --button-border-color: currentcolor;
+  --button-color: currentcolor;
+}
+
+.u-button[data-button-size='small'] {
+  --button-padding: var(--space-xs);
+  --button-text-size: var(--step--1);
+}

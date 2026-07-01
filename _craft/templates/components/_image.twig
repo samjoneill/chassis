@@ -1,0 +1,24 @@
+{#
+  Image
+  A responsive image wrapped in a <figure>, with an optional caption.
+
+  file        object  A Craft asset object.
+  transforms  array   Array of Craft transform configs for srcset generation.
+  sizes       string  Optional. The `sizes` attribute. Required when multiple transforms are provided.
+  alt         string  Optional. Fallback alt text if the asset has none set.
+  caption     string  Optional. Caption text, rendered as a <figcaption>.
+
+  {% include 'components/_image' with {
+    file: asset,
+    transforms: [{ width: 800, format: 'webp' }, { width: 1600, format: 'webp' }],
+    sizes: '(min-width: 60rem) 800px, 100vw',
+    caption: asset.caption
+  } only %}
+#}
+{% from 'macros/imageSet' import imageSet %}
+<figure class="u-image">
+  {{ imageSet(file, transforms, sizes|default(''), alt|default(''), 'u-image__media') }}
+  {% if caption|default('') %}
+    <figcaption class="u-caption">{{ caption }}</figcaption>
+  {% endif %}
+</figure>

@@ -1,0 +1,31 @@
+{#
+  Radio
+  A single radio button input with a custom SVG control.
+  Use inside _field-group for grouped radio buttons, sharing a common `name`.
+
+  value    string   The input id and value attribute.
+  label    string   The visible label text.
+  name     string   Optional. Input name attribute for grouping radios. Defaults to value.
+  checked  boolean  Optional. Whether this option is pre-selected. Default: false.
+
+  {% embed 'components/_field-group' with { legend_text: 'Size' } only %}
+    {% block options %}
+      {% include 'components/_radio' with { value: 'size-s', label: 'Small', name: 'size' } only %}
+      {% include 'components/_radio' with { value: 'size-m', label: 'Medium', name: 'size' } only %}
+      {% include 'components/_radio' with { value: 'size-l', label: 'Large', name: 'size' } only %}
+    {% endblock %}
+  {% endembed %}
+#}
+<label class="u-radio" for="{{ value }}">
+  <input
+    type="radio"
+    id="{{ value }}"
+    name="{{ name|default(value) }}"
+    value="{{ value }}"
+    {% if checked|default(false) %}checked{% endif %}>
+  <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+    <circle class="u-radio__bg" cx="10" cy="10" r="9" stroke="currentColor" fill="none" stroke-width="1"></circle>
+    <circle class="u-radio__checkmark" cx="10" cy="10" r="5" fill="white"></circle>
+  </svg>
+  <span>{{ label }}</span>
+</label>

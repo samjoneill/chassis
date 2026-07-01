@@ -1,0 +1,8 @@
+.u-horizontal-rule {
+  --horizontal-rule-color: var(--color-light--shade-30);
+
+  border: none;
+  border-block-start: 1px solid var(--horizontal-rule-color);
+  margin: 0;
+  inline-size: 100%;
+}

@@ -1,0 +1,28 @@
+{#
+  Checkbox
+  A single checkbox input with a custom SVG control.
+  Use inside _field-group for grouped checkboxes.
+
+  value    string   The input id, name, and value attribute.
+  label    string   The visible label text.
+  name     string   Optional. Input name attribute. Defaults to value.
+  checked  boolean  Optional. Whether the checkbox is pre-checked. Default: false.
+
+  {% include 'components/_checkbox' with {
+    value: 'agree-terms',
+    label: 'I agree to the terms and conditions'
+  } only %}
+#}
+<label class="u-checkbox" for="{{ value }}">
+  <input
+    type="checkbox"
+    id="{{ value }}"
+    name="{{ name|default(value) }}"
+    value="{{ value }}"
+    {% if checked|default(false) %}checked{% endif %}>
+  <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+    <rect class="u-checkbox__bg" width="18" height="18" x="1" y="1" stroke="currentColor" fill="none" stroke-width="1" rx="2" ry="2"></rect>
+    <polyline class="u-checkbox__checkmark" points="4,10 8,14 16,5" stroke="transparent" stroke-width="2" fill="none"></polyline>
+  </svg>
+  <span>{{ label }}</span>
+</label>

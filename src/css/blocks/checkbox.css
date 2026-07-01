@@ -1,0 +1,66 @@
+/* https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/ */
+
+.u-checkbox {
+  --checked-state-bg-color: var(--color-brand);
+  --checked-state-checkmark-color: var(--color-light);
+
+  position: relative;
+  cursor: pointer;
+
+  align-items: center;
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.u-checkbox + .u-checkbox {
+  margin-block-start: var(--space-2xs);
+}
+
+.u-checkbox span {
+  line-height: var(--line-height-condensed);
+}
+
+.u-checkbox input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  inline-size: 1em;
+  block-size: 1em;
+  margin: 0;
+}
+
+.u-checkbox:has(input[type='checkbox']:focus-visible) {
+  outline: 2px solid var(--color-utility-orange);
+  outline-offset: 2px;
+}
+
+.u-checkbox input[type='checkbox']:focus:not(:focus-visible) + svg {
+  outline: none;
+}
+
+.u-checkbox svg {
+  inline-size: 1em;
+  block-size: 1em;
+}
+
+.u-checkbox svg * {
+  transition: all 0.1s linear;
+}
+
+.u-checkbox input[type='checkbox']:checked + svg .u-checkbox__bg {
+  fill: var(--checked-state-bg-color);
+  stroke: var(--checked-state-bg-color);
+}
+
+.u-checkbox input[type='checkbox']:checked + svg .u-checkbox__checkmark {
+  stroke: var(--checked-state-checkmark-color);
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .u-checkbox input[type='checkbox']:checked + svg .u-checkbox__bg {
+    fill: windowText;
+  }
+
+  .u-checkbox input[type='checkbox']:checked + svg .u-checkbox__checkmark {
+    stroke: highlight;
+  }
+}

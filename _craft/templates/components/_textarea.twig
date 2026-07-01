@@ -1,0 +1,36 @@
+{#
+  Textarea
+  A multi-line text input with label and optional hint and error state.
+
+  id                 string   The textarea id and name attribute.
+  label_text         string   The visible label text.
+  hint_text          string   Optional. Supporting hint text shown below the label.
+  input_placeholder  string   Optional. Placeholder text.
+  rows               number   Optional. Number of visible rows. Default: 4.
+  disabled           boolean  Optional. Disables the input. Default: false.
+  has_error          boolean  Optional. Applies error styles. Default: false.
+  error_message      string   Optional. Error message shown when has_error is true. Default: 'Error message text'.
+
+  {% include 'components/_textarea' with {
+    id: 'message',
+    label_text: 'Your message',
+    hint_text: 'Maximum 500 characters.',
+    rows: 6
+  } only %}
+#}
+<div>
+  <label class="u-label" for="{{ id }}">{{ label_text }}</label>
+  {% if hint_text|default('') %}
+    <p class="u-hint">{{ hint_text }}</p>
+  {% endif %}
+  <textarea
+    class="u-textarea{% if has_error|default(false) %} u-textarea--error{% endif %}"
+    id="{{ id }}"
+    name="{{ id }}"
+    rows="{{ rows|default(4) }}"
+    {% if input_placeholder|default('') %}placeholder="{{ input_placeholder }}"{% endif %}
+    {% if disabled|default(false) %}disabled{% endif %}></textarea>
+  {% if has_error|default(false) %}
+    <p class="u-textarea-error">{{ error_message|default('Error message text') }}</p>
+  {% endif %}
+</div>

@@ -1,0 +1,22 @@
+.u-link {
+  --link-color: var(--color-brand);
+  --link-color-hover: var(--color-dark);
+  --link-gap: var(--space-2xs);
+
+  align-items: center;
+  color: var(--link-color);
+  display: inline-flex;
+  gap: var(--link-gap);
+  line-height: var(--line-height-condensed);
+  text-decoration-color: transparent;
+}
+
+.u-link:hover,
+.u-link:focus-visible {
+  color: var(--link-color-hover);
+  text-decoration-color: currentcolor;
+}
+
+.u-link svg {
+  flex-shrink: 0;
+}

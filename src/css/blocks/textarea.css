@@ -1,0 +1,36 @@
+.u-textarea {
+  --textarea-border-color: var(--color-dark--tint-30);
+  --textarea-text-size: var(--step-0);
+  --textarea-padding-block: var(--space-s);
+  --textarea-padding-inline: var(--space-xs);
+
+  border: 1px solid var(--textarea-border-color);
+  color: var(--color-dark);
+  display: block;
+  font-family: var(--font-main);
+  font-size: var(--textarea-text-size);
+  padding-block: var(--textarea-padding-block);
+  padding-inline: var(--textarea-padding-inline);
+}
+
+.u-textarea[disabled] {
+  background-color: var(--color-light--shade-10);
+  cursor: not-allowed;
+}
+
+.u-textarea--error {
+  --textarea-border-color: var(--color-utility-red);
+}
+
+.u-textarea:focus-visible {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--color-utility-orange);
+  outline-offset: 2px;
+}
+
+.u-textarea-error {
+  color: var(--color-utility-red);
+  line-height: var(--line-height-condensed);
+  margin-block: var(--space-2xs) 0;
+}

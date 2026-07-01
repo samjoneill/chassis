@@ -1,0 +1,44 @@
+.u-text-callout {
+  --text-callout-bg: var(--color-light--shade-10);
+  --text-callout-heading-color: var(--color-dark);
+  --text-callout-body-color: var(--color-dark);
+  --text-callout-action-color: var(--color-brand);
+  --text-callout-action-color-hover: var(--color-dark);
+  --text-callout-padding: var(--space-s);
+  --text-callout-gap: var(--space-s);
+
+  background-color: var(--text-callout-bg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--text-callout-gap);
+  padding: var(--text-callout-padding);
+}
+
+.u-text-callout[data-text-callout-style='dark'] {
+  --text-callout-bg: var(--color-dark);
+  --text-callout-heading-color: var(--color-light);
+  --text-callout-body-color: var(--color-light);
+  --text-callout-action-color: var(--color-brand--tint-45);
+  --text-callout-action-color-hover: var(--color-light);
+}
+
+.u-text-callout[data-text-callout-style='brand'] {
+  --text-callout-bg: var(--color-brand--tint-90);
+}
+
+.u-text-callout__heading {
+  color: var(--text-callout-heading-color);
+  font-size: var(--step-0);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-condensed);
+}
+
+.u-text-callout__body {
+  color: var(--text-callout-body-color);
+  font-size: var(--step-0);
+  line-height: var(--line-height-relaxed);
+}
+
+.u-text-callout .u-button {
+  width: max-content;
+}
