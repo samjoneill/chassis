@@ -35,191 +35,185 @@ title: Component preview
 {% from "components/_video.njk" import video %}
 
 {% block header %}
-  <div class="wrapper">
-    <h1>{{ title }}</h1>
-    <p>Every ported component, rendered with sample data.</p>
-  </div>
 {% endblock %}
 
 {% block main %}
-<div class="wrapper flow">
+<div class="flow" data-flow="2xl">
+  {{ hero(
+    heading=title,
+    lead="Supporting lead paragraph text for the hero component.",
+    image="images/placeholder-article.svg",
+    imageWidths=[800, 1440, 2000],
+    actionText="Find out more",
+    actionHref="#"
+  ) }}
 
-  <section class="flow">
-    <h2>Hero</h2>
-    {{ hero(
-      "Sample hero heading",
-      lead="Supporting lead paragraph text for the hero component.",
-      image="images/placeholder-article.svg",
-      imageWidths=[800, 1440, 2000],
-      actionText="Find out more",
-      actionHref="#"
-    ) }}
-  </section>
+  <div class="wrapper flow" data-flow="xl">
+    <section class="flow" data-flow="m">
+      <h2>Article card</h2>
+      {{ articleCard(
+        "images/placeholder-article.svg",
+        [400, 800],
+        "(min-width: 40rem) 50vw, 100vw",
+        "Sample heading",
+        "Redesigning our onboarding flow",
+        meta="12 Mar 2026",
+        body="A look at how we cut signup drop-off by half.",
+        actionText="Read more",
+        actionHref="#"
+      ) }}
+    </section>
 
-  <section class="flow">
-    <h2>Article card</h2>
-    {{ articleCard(
-      "images/placeholder-article.svg",
-      [400, 800],
-      "(min-width: 40rem) 50vw, 100vw",
-      "Sample heading",
-      "Redesigning our onboarding flow",
-      meta="12 Mar 2026",
-      body="A look at how we cut signup drop-off by half.",
-      actionText="Read more",
-      actionHref="#"
-    ) }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Image</h2>
+      {{ imageComponent("images/placeholder-article.svg", [400, 800], "(min-width: 40rem) 50vw, 100vw", "Placeholder image", "An example caption.") }}
+    </section>
 
-  <section class="flow">
-    <h2>Image</h2>
-    {{ imageComponent("images/placeholder-article.svg", [400, 800], "(min-width: 40rem) 50vw, 100vw", "Placeholder image", "An example caption.") }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Feature quote</h2>
+      {{ featureQuote(
+        "Working with this team transformed our approach entirely.",
+        name="Jane Smith",
+        role="Title, Company Ltd",
+        avatar="images/placeholder-avatar.svg"
+      ) }}
+    </section>
 
-  <section class="flow">
-    <h2>Feature quote</h2>
-    {{ featureQuote(
-      "Working with this team transformed our approach entirely.",
-      name="Jane Smith",
-      role="Title, Company Ltd",
-      avatar="images/placeholder-avatar.svg"
-    ) }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Button</h2>
+      {{ button(label="Primary button", variant="primary") }}
+      {{ button(label="Outline button", variant="outline") }}
+      {{ button(label="Ghost button", ghost=true) }}
+      {{ button(label="Button as link", href="#") }}
+    </section>
 
-  <section class="flow">
-    <h2>Button</h2>
-    {{ button(label="Primary button", variant="primary") }}
-    {{ button(label="Outline button", variant="outline") }}
-    {{ button(label="Ghost button", ghost=true) }}
-    {{ button(label="Button as link", href="#") }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Link</h2>
+      {{ link("Read the full report", "#") }}
+    </section>
 
-  <section class="flow">
-    <h2>Link</h2>
-    {{ link("Read the full report", "#") }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Alert</h2>
+      {{ alert("Your changes have been saved.", level="success") }}
+      {{ alert("Please review the highlighted fields.", level="warning") }}
+      {{ alert("Something went wrong. Please try again.", level="failure") }}
+    </section>
 
-  <section class="flow">
-    <h2>Alert</h2>
-    {{ alert("Your changes have been saved.", level="success") }}
-    {{ alert("Please review the highlighted fields.", level="warning") }}
-    {{ alert("Something went wrong. Please try again.", level="failure") }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Text callout</h2>
+      {{ textCallout(
+        "Did you know?",
+        "We offer a free consultation for all new clients.",
+        actionText="Book a consultation",
+        actionHref="#",
+        style="brand"
+      ) }}
+    </section>
 
-  <section class="flow">
-    <h2>Text callout</h2>
-    {{ textCallout(
-      "Did you know?",
-      "We offer a free consultation for all new clients.",
-      actionText="Book a consultation",
-      actionHref="#",
-      style="brand"
-    ) }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Statistic</h2>
+      {{ statistic("94%", "Client satisfaction rate", style="brand") }}
+    </section>
 
-  <section class="flow">
-    <h2>Statistic</h2>
-    {{ statistic("94%", "Client satisfaction rate", style="brand") }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>USP</h2>
+      {{ usp("No hidden fees", "Our pricing is fully transparent. What you see is what you pay.") }}
+    </section>
 
-  <section class="flow">
-    <h2>USP</h2>
-    {{ usp("No hidden fees", "Our pricing is fully transparent. What you see is what you pay.") }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Accordion</h2>
+      {{ accordion([
+        { title: "First section", content: "Content for the first section." },
+        { title: "Second section", content: "Content for the second section." }
+      ]) }}
+    </section>
 
-  <section class="flow">
-    <h2>Accordion</h2>
-    {{ accordion([
-      { title: "First section", content: "Content for the first section." },
-      { title: "Second section", content: "Content for the second section." }
-    ]) }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Tabs</h2>
+      {{ tabs([
+        { label: "Overview", content: "Overview content here." },
+        { label: "Details", content: "Details content here." },
+        { label: "FAQs", content: "FAQ content here." }
+      ], variant="1", label="Product information") }}
+    </section>
 
-  <section class="flow">
-    <h2>Tabs</h2>
-    {{ tabs([
-      { label: "Overview", content: "Overview content here." },
-      { label: "Details", content: "Details content here." },
-      { label: "FAQs", content: "FAQ content here." }
-    ], variant="1", label="Product information") }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Block quote</h2>
+      {{ blockQuote("Design is not just what it looks like. Design is how it works.") }}
+    </section>
 
-  <section class="flow">
-    <h2>Block quote</h2>
-    {{ blockQuote("Design is not just what it looks like. Design is how it works.") }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Caption &amp; hint &amp; label</h2>
+      {{ caption("Figure 1: Quarterly revenue by region.") }}
+      {{ hint("Enter your number in international format.") }}
+      {{ label("Email address", "preview-email") }}
+    </section>
 
-  <section class="flow">
-    <h2>Caption &amp; hint &amp; label</h2>
-    {{ caption("Figure 1: Quarterly revenue by region.") }}
-    {{ hint("Enter your number in international format.") }}
-    {{ label("Email address", "preview-email") }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Ordered &amp; unordered lists</h2>
+      {{ orderedList([
+        "Submit the enquiry form.",
+        "We will be in touch within two working days.",
+        "An advisor will arrange a call with you."
+      ]) }}
+      {{ unorderedList([
+        "Free initial consultation",
+        "Dedicated account manager",
+        "Monthly progress reports"
+      ]) }}
+    </section>
 
-  <section class="flow">
-    <h2>Ordered &amp; unordered lists</h2>
-    {{ orderedList([
-      "Submit the enquiry form.",
-      "We will be in touch within two working days.",
-      "An advisor will arrange a call with you."
-    ]) }}
-    {{ unorderedList([
-      "Free initial consultation",
-      "Dedicated account manager",
-      "Monthly progress reports"
-    ]) }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Data table</h2>
+      {{ dataTable(
+        ["Name", "Role", "Department"],
+        [
+          ["Alice Johnson", "Lead Designer", "Product"],
+          ["Ben Carter", "Frontend Engineer", "Engineering"]
+        ]
+      ) }}
+    </section>
 
-  <section class="flow">
-    <h2>Data table</h2>
-    {{ dataTable(
-      ["Name", "Role", "Department"],
-      [
-        ["Alice Johnson", "Lead Designer", "Product"],
-        ["Ben Carter", "Frontend Engineer", "Engineering"]
-      ]
-    ) }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Pagination</h2>
+      {{ pagination(5, 2) }}
+    </section>
 
-  <section class="flow">
-    <h2>Pagination</h2>
-    {{ pagination(5, 2) }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Video</h2>
+      {{ video("dQw4w9WgXcQ", "An example video caption.") }}
+    </section>
 
-  <section class="flow">
-    <h2>Video</h2>
-    {{ video("dQw4w9WgXcQ", "An example video caption.") }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Horizontal rule</h2>
+      {{ horizontalRule() }}
+    </section>
 
-  <section class="flow">
-    <h2>Horizontal rule</h2>
-    {{ horizontalRule() }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Form fields &amp; form composition</h2>
+      {{ textInput("preview-name", "Full name") }}
+      {{ textarea("preview-message", "Message", hintText="Maximum 500 characters") }}
+      {{ select("preview-country", "Country", [
+        { value: "gb", label: "United Kingdom" },
+        { value: "us", label: "United States" }
+      ]) }}
+      {% call fieldGroup("Preferred contact method", "Select one option.") %}
+        {{ radio("preview-contact-email", "Email", name="preview-contact-method") }}
+        {{ radio("preview-contact-phone", "Phone", name="preview-contact-method") }}
+      {% endcall %}
+      {% call fieldGroup("Consent") %}
+        {{ checkbox("preview-consent", "I agree to the terms and conditions") }}
+      {% endcall %}
 
-  <section class="flow">
-    <h2>Form fields &amp; form composition</h2>
-    {{ textInput("preview-name", "Full name") }}
-    {{ textarea("preview-message", "Message", hintText="Maximum 500 characters") }}
-    {{ select("preview-country", "Country", [
-      { value: "gb", label: "United Kingdom" },
-      { value: "us", label: "United States" }
-    ]) }}
-    {% call fieldGroup("Preferred contact method", "Select one option.") %}
-      {{ radio("preview-contact-email", "Email", name="preview-contact-method") }}
-      {{ radio("preview-contact-phone", "Phone", name="preview-contact-method") }}
-    {% endcall %}
-    {% call fieldGroup("Consent") %}
-      {{ checkbox("preview-consent", "I agree to the terms and conditions") }}
-    {% endcall %}
+      <h3>Full form composition</h3>
+      {{ form() }}
+    </section>
 
-    <h3>Full form composition</h3>
-    {{ form() }}
-  </section>
+    <section class="flow" data-flow="m">
+      <h2>Icon</h2>
+      {{ icon("arrow-right") }}
+    </section>
 
-  <section class="flow">
-    <h2>Icon</h2>
-    {{ icon("arrow-right") }}
-  </section>
-
+  </div>
 </div>
 {% endblock %}
