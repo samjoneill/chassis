@@ -1,0 +1,49 @@
+.u-data-table-wrapper {
+  --data-table-scroll-bg: var(--color-light);
+  --data-table-scroll-shadow: oklch(from var(--color-dark) l c h / 0.1);
+  overflow-x: auto;
+  background-color: var(--data-table-scroll-bg);
+  background-image:
+    linear-gradient(to right, var(--data-table-scroll-bg), transparent),
+    linear-gradient(to left, var(--data-table-scroll-bg), transparent),
+    linear-gradient(to right, var(--data-table-scroll-shadow), transparent),
+    linear-gradient(to left, var(--data-table-scroll-shadow), transparent);
+  background-position:
+    0 0,
+    100%,
+    0 0,
+    100%;
+  background-size:
+    40px 100%,
+    40px 100%,
+    20px 100%,
+    20px 100%;
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+}
+
+.u-data-table {
+  --data-table-border-color: var(--color-dark--tint-30);
+  --data-table-min-width: 32rem;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+  min-inline-size: var(--data-table-min-width);
+  inline-size: 100%;
+}
+
+.u-data-table th {
+  border-block-end: 1px solid var(--data-table-border-color);
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-2xs) var(--space-xs);
+  text-align: left;
+}
+
+.u-data-table td {
+  border-block-end: 1px solid var(--data-table-border-color);
+  font-weight: var(--font-weight-normal);
+  padding: var(--space-2xs) var(--space-xs);
+}
+
+.u-data-table tbody tr:last-child td {
+  border-block-end: none;
+}

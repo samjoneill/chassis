@@ -1,0 +1,47 @@
+.u-usp {
+  --usp-icon-color: var(--color-brand);
+  --usp-icon-size: var(--space-m);
+  --usp-icon-border-width: 3px;
+  --usp-gap: var(--space-s);
+
+  align-items: flex-start;
+  display: flex;
+  gap: var(--usp-gap);
+}
+
+.u-usp__icon {
+  align-items: center;
+  border: var(--usp-icon-border-width) solid var(--usp-icon-color);
+  border-radius: 50%;
+  color: var(--usp-icon-color);
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: calc(var(--space-s) - (var(--usp-icon-size) - 24px) / 2);
+}
+
+.u-usp__icon svg {
+  inline-size: var(--usp-icon-size);
+  block-size: var(--usp-icon-size);
+}
+
+.u-usp__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  min-inline-size: 0;
+}
+
+.u-usp__heading {
+  font-size: var(--step-1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-condensed);
+  margin: 0;
+}
+
+.u-usp__description {
+  font-size: var(--step--1);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}

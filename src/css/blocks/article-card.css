@@ -1,0 +1,150 @@
+.u-article-card {
+  --article-card-gap: var(--space-s);
+  --article-card-meta-color: var(--color-dark--tint-30);
+  --article-card-action-color: var(--color-brand);
+  display: flex;
+  flex-direction: column;
+}
+
+.u-article-card__image-wrapper {
+  overflow: hidden;
+}
+
+.u-article-card__image {
+  aspect-ratio: 16 / 9;
+  display: block;
+  block-size: auto;
+  object-fit: cover;
+  inline-size: 100%;
+}
+
+.u-article-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--article-card-gap);
+  padding-block-start: var(--space-s);
+}
+
+.u-article-card[data-article-card-mode='inset-light'] .u-article-card__content,
+.u-article-card[data-article-card-mode='inset-dark'] .u-article-card__content {
+  padding: var(--space-s);
+}
+
+.u-article-card[data-article-card-mode='inset-light'] .u-article-card__content {
+  background-color: var(--color-light--shade-5);
+}
+
+.u-article-card[data-article-card-mode='inset-dark'] .u-article-card__content {
+  background-color: var(--color-dark);
+}
+
+.u-article-card__meta {
+  color: var(--article-card-meta-color);
+  font-size: var(--step--1);
+  margin: 0;
+}
+
+.u-article-card[data-article-card-mode='inset-dark'] .u-article-card__meta {
+  color: var(--color-light--shade-30);
+}
+
+.u-article-card__heading {
+  font-size: var(--step-1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-condensed);
+  margin: 0;
+}
+
+.u-article-card[data-article-card-mode='inset-dark'] .u-article-card__heading {
+  color: var(--color-light);
+}
+
+.u-article-card__body {
+  font-size: var(--step-0);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.u-article-card[data-article-card-mode='inset-dark'] .u-article-card__body {
+  color: var(--color-light);
+}
+
+.u-article-card .u-link {
+  --link-color: var(--article-card-action-color);
+}
+
+.u-article-card[data-article-card-mode='inset-dark'] .u-link {
+  --link-color: var(--color-brand--tint-45);
+  --link-color-hover: var(--color-light);
+}
+
+/* Wide layout */
+
+.u-article-card[data-article-card-layout='wide'] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 40em) {
+  .u-article-card[data-article-card-layout='wide'] {
+    grid-template-columns: 1fr;
+  }
+}
+
+.u-article-card[data-article-card-layout='wide'] .u-article-card__image {
+  aspect-ratio: unset;
+  block-size: 100%;
+}
+
+.u-article-card[data-article-card-layout='wide'] .u-article-card__content {
+  justify-content: center;
+  padding-block: var(--space-s-l);
+  padding-block-start: var(--space-s-l);
+}
+
+.u-article-card[data-article-card-layout='wide'][data-article-card-mode='open'][data-article-card-img-pos='start']
+  .u-article-card__content {
+  padding-inline-start: var(--space-s-l);
+}
+
+.u-article-card[data-article-card-layout='wide'][data-article-card-mode='open'][data-article-card-img-pos='end']
+  .u-article-card__content {
+  padding-inline-end: var(--space-s-l);
+}
+
+@media (max-width: 40em) {
+  .u-article-card[data-article-card-layout='wide'][data-article-card-mode='open'][data-article-card-img-pos='start']
+    .u-article-card__content {
+    padding-block-start: var(--space-s);
+    padding-block-end: 0;
+    padding-inline: 0;
+  }
+
+  .u-article-card[data-article-card-layout='wide'][data-article-card-mode='open'][data-article-card-img-pos='end']
+    .u-article-card__content {
+    padding-block-end: var(--space-s);
+    padding-block-start: 0;
+    padding-inline: 0;
+  }
+}
+
+.u-article-card[data-article-card-layout='wide'][data-article-card-mode='inset-light']
+  .u-article-card__content {
+  padding: var(--space-s-l);
+}
+
+.u-article-card[data-article-card-layout='wide'][data-article-card-mode='inset-dark']
+  .u-article-card__content {
+  padding: var(--space-s-l);
+}
+
+.u-article-card[data-article-card-layout='wide'][data-article-card-mode='inset-dark']
+  .u-article-card__meta {
+  color: var(--color-light--shade-25);
+}
+
+.u-article-card[data-article-card-layout='wide'][data-article-card-mode='inset-dark']
+  .u-link {
+  --link-color: var(--color-brand--tint-45);
+  --link-color-hover: var(--color-light);
+}

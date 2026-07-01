@@ -1,0 +1,16 @@
+{#
+  Link
+  A standalone action link with an arrow icon.
+  For inline body-copy links, use a plain <a> element — global styles apply automatically.
+
+  text  string  The visible link text.
+  href  string  Optional. The link URL. Default: #.
+
+  {% include 'components/_link' with {
+    text: 'Read the full report',
+    href: entry.url
+  } only %}
+#}
+<a href="{{ href|default('#') }}" class="u-link">
+  {%- include 'components/_icon' with { id: 'arrow-right' } only %}
+  <span>{{ text }}</span></a>

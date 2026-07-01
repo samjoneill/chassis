@@ -1,0 +1,51 @@
+{#
+  Tabs
+  An accessible tabbed interface with keyboard navigation.
+  Requires the tabs IIFE in main.js to be loaded on the page.
+
+  tabs     array   Array of objects with `label` (string) and `content` (string).
+  variant  string  Optional. Visual style. One of: 1 (underline), 2 (top border), 3 (filled). Default: 1.
+  label    string  Optional. Accessible aria-label for the tab list. Default: 'Content'.
+  id       string  Optional. Unique prefix for tab/panel IDs. Supply when multiple tab sets appear on one page.
+
+  {% include 'components/_tabs' with {
+    tabs: [
+      { label: 'Overview', content: 'Overview content here.' },
+      { label: 'Details', content: 'Details content here.' },
+      { label: 'FAQs', content: 'FAQ content here.' }
+    ],
+    variant: '1',
+    label: 'Product information'
+  } only %}
+#}
+{% set _tabsId = id|default('tabs-' ~ now|date('U') ~ loop.index|default('0')) %}
+
+<div class="u-tabs" data-tabs-variant="{{ variant|default('1') }}">
+  <div class="u-tabs__list" role="tablist" aria-label="{{ label|default('Content') }}">
+    {% for tab in tabs %}
+      {% set _tabId = _tabsId ~ '-tab-' ~ loop.index0 %}
+      {% set _panelId = _tabsId ~ '-panel-' ~ loop.index0 %}
+      <button
+        type="button"
+        class="u-tabs__tab"
+        id="{{ _tabId }}"
+        role="tab"
+        aria-selected="{{ loop.first ? 'true' : 'false' }}"
+        aria-controls="{{ _panelId }}"
+        tabindex="{{ loop.first ? '0' : '-1' }}">{{ tab.label }}</button>
+    {% endfor %}
+  </div>
+  <div class="u-tabs__panels">
+    {% for tab in tabs %}
+      {% set _tabId = _tabsId ~ '-tab-' ~ loop.index0 %}
+      {% set _panelId = _tabsId ~ '-panel-' ~ loop.index0 %}
+      <div
+        class="u-tabs__panel"
+        id="{{ _panelId }}"
+        role="tabpanel"
+        aria-labelledby="{{ _tabId }}"
+        tabindex="0"
+        {% if not loop.first %}hidden{% endif %}>{{ tab.content }}</div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.u-text-input {
+  --text-input-border-color: var(--color-dark--tint-30);
+  --text-input-text-size: var(--step-0);
+  --text-input-padding-block: var(--space-s);
+  --text-input-padding-inline: var(--space-xs);
+
+  border: 1px solid var(--text-input-border-color);
+  color: var(--color-dark);
+  display: block;
+  font-family: var(--font-main);
+  font-size: var(--text-input-text-size);
+  padding-block: var(--text-input-padding-block);
+  padding-inline: var(--text-input-padding-inline);
+}
+
+.u-text-input[disabled] {
+  background-color: var(--color-light--shade-10);
+  cursor: not-allowed;
+}
+
+.u-text-input--error {
+  --text-input-border-color: var(--color-utility-red);
+}
+
+.u-text-input:focus-visible {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--color-utility-orange);
+  outline-offset: 2px;
+}
+
+.u-text-input-error {
+  color: var(--color-utility-red);
+  line-height: var(--line-height-condensed);
+  margin-block: var(--space-2xs) 0;
+}

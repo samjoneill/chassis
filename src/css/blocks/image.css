@@ -1,0 +1,13 @@
+.u-image {
+  margin: 0;
+}
+
+.u-image__media {
+  display: block;
+  block-size: auto;
+  inline-size: 100%;
+}
+
+.u-image > .u-caption {
+  margin-block-start: var(--space-2xs);
+}

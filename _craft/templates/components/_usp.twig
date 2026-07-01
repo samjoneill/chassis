@@ -1,0 +1,21 @@
+{#
+  USP (Unique Selling Point)
+  A tick icon paired with a heading and description for highlighting key benefits.
+
+  heading      string  The USP heading.
+  description  string  The supporting description text.
+
+  {% include 'components/_usp' with {
+    heading: 'No hidden fees',
+    description: 'Our pricing is fully transparent. What you see is what you pay.'
+  } only %}
+#}
+<div class="u-usp">
+  <div class="u-usp__icon">
+    {% include 'components/_icon' with { id: 'tick' } only %}
+  </div>
+  <div class="u-usp__content">
+    <h3 class="u-usp__heading">{{ heading }}</h3>
+    <p class="u-usp__description">{{ description }}</p>
+  </div>
+</div>

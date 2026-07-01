@@ -1,0 +1,17 @@
+.u-block-quote {
+  --block-quote-border-color: var(--color-brand);
+  --block-quote-text-color: var(--color-brand);
+  --block-quote-padding-x: var(--space-s);
+  --block-quote-margin-y: var(--space-2xs);
+
+  border-inline-start: 1px solid var(--block-quote-border-color);
+  margin-block: var(--block-quote-margin-y);
+  margin-inline: 0;
+  padding-inline-start: var(--block-quote-padding-x);
+}
+
+.u-block-quote p {
+  color: var(--block-quote-text-color);
+  font-size: var(--step--1);
+  line-height: var(--line-height-relaxed);
+}

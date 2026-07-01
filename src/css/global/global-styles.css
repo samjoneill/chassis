@@ -6,8 +6,10 @@
 body {
   background: var(--color-light);
   color: var(--color-dark);
+  container-type: inline-size;
   font-family: var(--font-main);
   font-size: var(--step-0);
+  font-weight: var(--font-weight-normal);
   line-height: var(--line-height-default);
 }
 
@@ -37,20 +39,6 @@ h4 {
   font-size: var(--step-2);
 }
 
-/* Set line lengths */
-p,
-li,
-blockquote:not([class]) {
-  max-width: 50ch;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  max-width: 20ch;
-}
-
 /* More generic elements */
 blockquote:not([class]) {
   font-family: var(--font-main);
@@ -76,11 +64,25 @@ svg {
 
 /* Base interactive elements */
 a {
-  color: currentcolor;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  transition:
+    color 0.2s,
+    text-decoration-color 0.2s;
 }
-
-a:hover {
-  text-decoration: none;
+a:not([class]) {
+  color: var(--color-brand);
+  text-decoration: underline;
+}
+a:hover,
+a:focus,
+a:focus-visible {
+  color: var(--color-dark);
+  text-decoration-color: transparent;
+}
+a:focus-visible {
+  outline: 2px solid var(--color-utility-orange);
+  outline-offset: 2px;
 }
 
 :focus {

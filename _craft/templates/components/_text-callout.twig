@@ -1,0 +1,28 @@
+{#
+  Text Callout
+  A boxed callout with a heading, body text, and optional action link.
+
+  heading     string   The callout heading.
+  body        string   The callout body text.
+  style       string   Optional. Visual style. One of: default, dark, brand. Default: default.
+  action_text string   Optional. Label for the action link. Omit to hide the link.
+  action_href string   Optional. URL for the action link. Default: #.
+
+  {% include 'components/_text-callout' with {
+    heading: 'Did you know?',
+    body: 'We offer a free consultation for all new clients.',
+    action_text: 'Book a consultation',
+    action_href: '/contact',
+    style: 'brand'
+  } only %}
+#}
+<div class="u-text-callout" data-text-callout-style="{{ style|default('default') }}">
+  {% if heading %}<p class="u-text-callout__heading">{{ heading }}</p>{% endif %}
+  {% if body %}<p class="u-text-callout__body">{{ body }}</p>{% endif %}
+  {% if action_text|default('') %}
+    {% include 'components/_button' with {
+      label: action_text,
+      href: action_href|default('#')
+    } only %}
+  {% endif %}
+</div>

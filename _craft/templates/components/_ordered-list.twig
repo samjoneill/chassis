@@ -1,0 +1,19 @@
+{#
+  Ordered List
+  A numbered list with branded marker colour.
+
+  items  array  Array of strings, one per list item.
+
+  {% include 'components/_ordered-list' with {
+    items: [
+      'Submit the enquiry form.',
+      'We will be in touch within two working days.',
+      'An advisor will arrange a call with you.'
+    ]
+  } only %}
+#}
+<ol class="u-ordered-list">
+  {% for item in items %}
+    <li class="u-ordered-list__item">{{ item }}</li>
+  {% endfor %}
+</ol>

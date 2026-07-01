@@ -1,0 +1,52 @@
+.u-accordion {
+  --accordion-max-width: 100%;
+  --accordion-border-color: var(--color-dark--tint-30);
+  --accordion-icon-color: var(--color-brand);
+  --accordion-padding-y: var(--space-s);
+
+  inline-size: 100%;
+  max-inline-size: var(--accordion-max-width);
+  margin-inline: auto;
+}
+
+.u-accordion__item {
+  border-block-start: 1px solid var(--accordion-border-color);
+  border-block-end: 1px solid var(--accordion-border-color);
+}
+
+.u-accordion__item + .u-accordion__item {
+  border-block-start: 0;
+}
+
+.u-accordion__header {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-weight: var(--font-weight-bold);
+  justify-content: space-between;
+  line-height: var(--line-height-condensed);
+  padding-block: var(--accordion-padding-y);
+}
+
+.u-accordion__header::-webkit-details-marker {
+  display: none;
+}
+
+.u-accordion__header:focus-visible {
+  outline: 2px solid var(--color-utility-orange);
+  outline-offset: 2px;
+}
+
+.u-accordion__header svg {
+  color: var(--accordion-icon-color);
+  margin-inline-end: var(--space-2xs);
+  transition: transform 0.2s ease;
+}
+
+.u-accordion__item[open] .u-accordion__header svg {
+  transform: rotate(180deg);
+}
+
+.u-accordion__content {
+  padding-block-end: var(--accordion-padding-y);
+}

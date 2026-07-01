@@ -1,0 +1,11 @@
+{#
+  Caption
+  A small, muted text element for captions and supporting labels.
+
+  text  string  The caption text.
+
+  {% include 'components/_caption' with {
+    text: 'Figure 1: Quarterly revenue by region.'
+  } only %}
+#}
+<p class="u-caption">{{ text }}</p>

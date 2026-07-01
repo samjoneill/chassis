@@ -1,0 +1,13 @@
+.u-label {
+  --label-margin: var(--space-xs);
+  --label-margin-with-hint: var(--space-2xs);
+
+  display: block;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-condensed);
+  margin-block-end: var(--label-margin);
+}
+
+.u-label:has(+ .u-hint) {
+  margin-block-end: var(--label-margin-with-hint);
+}

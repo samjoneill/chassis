@@ -1,0 +1,50 @@
+.u-feature-quote {
+  --feature-quote-color: var(--color-brand);
+  --feature-quote-text-size: var(--step-1);
+  --feature-quote-avatar-size: 72px;
+
+  margin: 0;
+}
+
+.u-feature-quote blockquote {
+  margin: 0;
+}
+
+.u-feature-quote__mark {
+  color: var(--feature-quote-color);
+  display: block;
+  margin-block-end: var(--space-s);
+}
+
+.u-feature-quote__text {
+  color: var(--feature-quote-color);
+  font-size: var(--feature-quote-text-size);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.u-feature-quote__attribution {
+  align-items: center;
+  display: flex;
+  gap: var(--space-s);
+  margin-block-start: var(--space-m);
+}
+
+.u-feature-quote__avatar {
+  border-radius: 50%;
+  flex-shrink: 0;
+  block-size: var(--feature-quote-avatar-size);
+  object-fit: cover;
+  inline-size: var(--feature-quote-avatar-size);
+}
+
+.u-feature-quote__name {
+  font-size: var(--step--1);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+.u-feature-quote__role {
+  font-size: var(--step--1);
+  margin: 0;
+}

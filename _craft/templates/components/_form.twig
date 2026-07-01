@@ -1,0 +1,92 @@
+{#
+  Form
+  A complete contact form demonstrating all form component compositions.
+  Adapt field structure and IDs to suit your specific form requirements.
+
+  No parameters — fields are hardcoded. Replace with your own field includes as needed.
+
+  {% include 'components/_form' %}
+#}
+<form class="u-form" novalidate>
+
+  {% include 'components/_text-input' with {
+    label_text: 'Full name',
+    input_type: 'text',
+    id: 'full-name'
+  } only %}
+
+  {% include 'components/_text-input' with {
+    label_text: 'Email address',
+    input_type: 'email',
+    id: 'email'
+  } only %}
+
+  {% include 'components/_text-input' with {
+    label_text: 'Phone number',
+    input_type: 'tel',
+    hint_text: 'Optional',
+    id: 'phone'
+  } only %}
+
+  {% include 'components/_select' with {
+    label_text: 'Country',
+    id: 'country',
+    items: [
+      { value: '', label: 'Select a country…' },
+      { value: 'gb', label: 'United Kingdom' },
+      { value: 'us', label: 'United States' },
+      { value: 'ca', label: 'Canada' },
+      { value: 'au', label: 'Australia' },
+      { value: 'de', label: 'Germany' }
+    ]
+  } only %}
+
+  {% embed 'components/_field-group' with {
+    legend_text: 'Preferred contact method'
+  } only %}
+    {% block options %}
+      {% include 'components/_radio' with { value: 'contact-email', label: 'Email', name: 'contact-method' } only %}
+      {% include 'components/_radio' with { value: 'contact-phone', label: 'Phone', name: 'contact-method' } only %}
+      {% include 'components/_radio' with { value: 'contact-post', label: 'Post', name: 'contact-method' } only %}
+    {% endblock %}
+  {% endembed %}
+
+  {% include 'components/_select' with {
+    label_text: 'Category',
+    id: 'category',
+    items: [
+      { value: '', label: 'Select a category…' },
+      { value: 'general', label: 'General enquiry' },
+      { value: 'support', label: 'Technical support' },
+      { value: 'billing', label: 'Billing' },
+      { value: 'feedback', label: 'Feedback' }
+    ]
+  } only %}
+
+  {% include 'components/_text-input' with {
+    label_text: 'Subject',
+    input_type: 'text',
+    id: 'subject'
+  } only %}
+
+  {% include 'components/_textarea' with {
+    label_text: 'Message',
+    hint_text: 'Maximum 500 characters',
+    id: 'message'
+  } only %}
+
+  {% embed 'components/_field-group' with {
+    legend_text: 'Consent'
+  } only %}
+    {% block options %}
+      {% include 'components/_checkbox' with { value: 'consent-terms', label: 'I agree to the terms and conditions' } only %}
+      {% include 'components/_checkbox' with { value: 'consent-marketing', label: 'Send me occasional product updates and news' } only %}
+    {% endblock %}
+  {% endembed %}
+
+  <div class="u-form__actions">
+    {% include 'components/_button' with { label: 'Submit', variant: 'primary', size: 'large', type: 'submit' } only %}
+    {% include 'components/_button' with { label: 'Cancel', variant: 'primary', ghost: true, size: 'large' } only %}
+  </div>
+
+</form>

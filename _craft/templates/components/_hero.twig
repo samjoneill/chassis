@@ -1,0 +1,54 @@
+{#
+  Hero
+  A full-width banner with an optional background image, heading, lead text, and action link.
+
+  heading          string  The main heading text.
+  lead             string  Optional. Supporting lead paragraph.
+  image            object  Optional. A Craft asset object for the background image.
+  image_transforms array   Optional. Array of Craft transform configs for srcset generation.
+  image_sizes      string  Optional. The `sizes` attribute for the background image. Default: 100vw.
+  action_text      string  Optional. Label for the call-to-action link.
+  action_href      string  Optional. URL for the call-to-action link. Default: #.
+
+  {% include 'components/_hero' with {
+    heading: entry.title,
+    lead: entry.standfirst,
+    image: entry.hero_image.one(),
+    image_transforms: [
+      { width: 800, format: 'webp' },
+      { width: 1440, format: 'webp' },
+      { width: 2000, format: 'webp' }
+    ],
+    image_sizes: '100vw',
+    action_text: 'Find out more',
+    action_href: entry.cta_url
+  } only %}
+#}
+<div class="u-hero">
+  {% if image is defined and image and image_transforms is defined and image_transforms %}
+    <img
+      src="{{ image.getUrl(image_transforms[0]) }}"
+      srcset="{%- for t in image_transforms -%}{{ image.getUrl(t) ~ ' ' ~ image.getWidth(t) ~ 'w' ~ (not loop.last ? ', ') }}{%- endfor -%}"
+      sizes="{{ image_sizes|default('100vw') }}"
+      width="{{ image.getWidth(image_transforms[0]) }}"
+      height="{{ image.getHeight(image_transforms[0]) }}"
+      alt=""
+      aria-hidden="true"
+      class="u-hero__bg-image"
+      loading="lazy">
+  {% endif %}
+  <div class="wrapper">
+    <div class="u-hero__content">
+      <h1 class="u-hero__heading">{{ heading }}</h1>
+      {% if lead|default('') %}
+        <p class="u-hero__lead">{{ lead }}</p>
+      {% endif %}
+      {% if action_text|default('') %}
+        {% include 'components/_link' with {
+          text: action_text,
+          href: action_href|default('#')
+        } only %}
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+{#
+  Hint
+  A small helper text element displayed below a form label.
+
+  text  string  The hint text.
+
+  {% include 'components/_hint' with {
+    text: 'Enter your number in international format.'
+  } only %}
+#}
+<p class="u-hint">{{ text }}</p>

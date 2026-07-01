@@ -1,0 +1,74 @@
+/* https://moderncss.dev/custom-select-styles-with-pure-css/ */
+
+.u-select select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  inline-size: 100%;
+}
+
+.u-select select {
+  padding-block: var(--select-padding-block);
+  padding-inline: var(--select-padding-inline);
+}
+
+.u-select {
+  --select-border-color: var(--color-dark--tint-30);
+  --select-text-size: var(--step-0);
+  --select-padding-block: var(--space-s);
+  --select-padding-inline: var(--space-xs);
+
+  align-items: center;
+  background-color: var(--color-light);
+  border: 1px solid var(--select-border-color);
+  color: var(--color-dark);
+  cursor: pointer;
+  display: grid;
+  font-family: var(--font-main);
+  font-size: var(--select-text-size);
+  grid-template-areas: 'select';
+  line-height: var(--line-height-condensed);
+}
+
+.u-select::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M8 10L12 14L16 10' stroke='%23393939' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  content: '';
+  block-size: 1.5rem;
+  justify-self: end;
+  margin-inline-end: var(--select-padding-inline);
+  inline-size: 1.5rem;
+}
+
+.u-select select,
+.u-select::after {
+  grid-area: select;
+}
+
+.u-select:has(> select[disabled]) {
+  background-color: var(--color-light--shade-10);
+  cursor: not-allowed;
+}
+
+.u-select--error {
+  --select-border-color: var(--color-utility-red);
+}
+
+.u-select:focus-within {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--color-utility-orange);
+  outline-offset: 2px;
+}
+
+.u-select-error {
+  color: var(--color-utility-red);
+  line-height: var(--line-height-condensed);
+  margin-block: var(--space-2xs) 0;
+}

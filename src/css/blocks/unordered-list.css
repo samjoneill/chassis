@@ -1,0 +1,15 @@
+ul:not([class]),
+.u-unordered-list {
+  --list-marker-color: var(--color-brand);
+  --list-gap: var(--space-2xs);
+}
+
+ul:not([class]) li::marker,
+.u-unordered-list__item::marker {
+  color: var(--list-marker-color);
+}
+
+ul:not([class]) li + li,
+.u-unordered-list__item + .u-unordered-list__item {
+  margin-block-start: var(--list-gap);
+}

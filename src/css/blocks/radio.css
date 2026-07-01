@@ -1,0 +1,73 @@
+/* https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/ */
+
+.u-radio {
+  --checked-state-bg-color: var(--color-brand);
+  --checked-state-radio-color: var(--color-light);
+
+  position: relative;
+  cursor: pointer;
+
+  align-items: center;
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.u-radio + .u-radio {
+  margin-block-start: var(--space-2xs);
+}
+
+.u-radio span {
+  line-height: var(--line-height-condensed);
+}
+
+.u-radio input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  inline-size: 1em;
+  block-size: 1em;
+  margin: 0;
+}
+
+.u-radio:has(input[type='radio']:focus-visible) {
+  outline: 2px solid var(--color-utility-orange);
+  outline-offset: 2px;
+}
+
+.u-radio input[type='radio']:focus:not(:focus-visible) + svg {
+  outline: none;
+}
+
+.u-radio svg {
+  inline-size: 1em;
+  block-size: 1em;
+}
+
+.u-radio svg * {
+  transition: all 0.1s linear;
+}
+
+.u-radio input[type='radio'] + svg .u-radio__checkmark {
+  fill: var(--checked-state-radio-color);
+  stroke: var(--checked-state-radio-color);
+  transform: scale(0);
+  transform-origin: center;
+}
+
+.u-radio input[type='radio']:checked + svg .u-radio__bg {
+  fill: var(--checked-state-bg-color);
+  stroke: var(--checked-state-bg-color);
+}
+
+.u-radio input[type='radio']:checked + svg .u-radio__checkmark {
+  transform: scale(100%);
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .u-radio input[type='radio']:checked + svg .u-radio__bg {
+    fill: windowText;
+  }
+
+  .u-radio input[type='radio']:checked + svg .u-radio__checkmark {
+    stroke: highlight;
+  }
+}

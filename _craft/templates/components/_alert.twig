@@ -1,0 +1,19 @@
+{#
+  Alert
+  An inline status message with a coloured left border and icon.
+
+  text   string  The alert message.
+  level  string  Optional. Severity level. One of: info, warning, success, failure. Default: info.
+
+  {% include 'components/_alert' with {
+    text: 'Your changes have been saved.',
+    level: 'success'
+  } only %}
+#}
+<div class="u-alert" data-alert-level="{{ level|default('info') }}" role="alert">
+  <span class="u-alert__icon">
+    {% set _iconId = level == 'warning' ? 'caution' : level|default('info') %}
+    {% include 'components/_icon' with { id: _iconId } only %}
+  </span>
+  <p class="u-alert__text">{{ text }}</p>
+</div>

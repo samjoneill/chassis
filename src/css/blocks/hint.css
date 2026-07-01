@@ -1,0 +1,10 @@
+.u-hint {
+  --hint-color: var(--color-dark--tint-30);
+  --hint-text-size: var(--step--2);
+  --hint-margin: var(--space-xs);
+
+  color: var(--hint-color);
+  font-size: var(--hint-text-size);
+  line-height: var(--line-height-condensed);
+  margin-block-end: var(--hint-margin);
+}

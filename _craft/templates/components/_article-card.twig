@@ -1,0 +1,72 @@
+{#
+  Article Card
+  A card component for linking to articles or news items.
+
+  image            object  A Craft asset object for the card image.
+  image_transforms array   Array of Craft transform configs for srcset generation.
+  image_sizes      string  Optional. The `sizes` attribute for the image.
+  image_alt        string  Optional. Fallback alt text if the asset has none set.
+  heading          string  Card heading.
+  layout           string  Optional. Card layout. One of: standard, wide. Default: standard.
+  mode             string  Optional. Content treatment. One of: open, inset-light, inset-dark. Default: open.
+  image_position   string  Optional. Image position in wide layout. One of: start, end. Default: start.
+  meta             string  Optional. Metadata text (e.g. publication date).
+  body             string  Optional. Short description text.
+  action_text      string  Optional. Label for the action link.
+  action_href      string  Optional. URL for the action link. Default: #.
+
+  {% include 'components/_article-card' with {
+    image: entry.image.one(),
+    image_transforms: [{ width: 400, format: 'webp' }, { width: 800, format: 'webp' }],
+    image_sizes: '(min-width: 40rem) 50vw, 100vw',
+    heading: entry.title,
+    meta: entry.post_date|date('d M Y'),
+    body: entry.summary,
+    action_text: 'Read more',
+    action_href: entry.url
+  } only %}
+#}
+{% from 'macros/imageSet' import imageSet %}
+{% set _layout = layout|default('standard') %}
+{% set _mode = mode|default('open') %}
+{% set _imagePosition = image_position|default('start') %}
+
+<article class="u-article-card"
+  data-article-card-mode="{{ _mode }}"
+  {% if _layout == 'wide' %}
+  data-article-card-layout="wide"
+  data-article-card-img-pos="{{ _imagePosition }}"
+  {% endif %}>
+
+  {% set _imageEl %}
+    <div class="u-article-card__image-wrapper">
+      {{ imageSet(image, image_transforms, image_sizes|default(''), image_alt|default(''), 'u-article-card__image') }}
+    </div>
+  {% endset %}
+
+  {% set _contentEl %}
+    <div class="u-article-card__content">
+      {% if meta|default('') %}
+        <p class="u-article-card__meta">{{ meta }}</p>
+      {% endif %}
+      <h3 class="u-article-card__heading">{{ heading }}</h3>
+      {% if body|default('') %}
+        <p class="u-article-card__body">{{ body }}</p>
+      {% endif %}
+      {% if action_text|default('') %}
+        {% include 'components/_link' with {
+          text: action_text,
+          href: action_href|default('#')
+        } only %}
+      {% endif %}
+    </div>
+  {% endset %}
+
+  {% if _layout == 'wide' and _imagePosition == 'end' %}
+    {{ _contentEl }}
+    {{ _imageEl }}
+  {% else %}
+    {{ _imageEl }}
+    {{ _contentEl }}
+  {% endif %}
+</article>
