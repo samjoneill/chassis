@@ -1,0 +1,36 @@
+{#
+  Feature Quote
+  A large pull-quote with an optional attribution block.
+
+  quote   string  The quoted text.
+  name    string  Optional. Name of the person quoted. Shows attribution block when provided.
+  role    string  Optional. Role or title of the person quoted.
+  avatar  string  Optional. Path to a local source image for the person's photo.
+
+  {{ featureQuote("Working with this team transformed our approach entirely.", name="Jane Smith", role="Title, Company Ltd", avatar="images/avatars/jane-smith.jpg") }}
+#}
+{% macro featureQuote(quote, name="", role="", avatar="") %}
+<figure class="u-feature-quote">
+  <blockquote>
+    <svg class="u-feature-quote__mark" xmlns="http://www.w3.org/2000/svg" width="37" height="30" viewBox="0 0 37 30" aria-hidden="true">
+      <path d="M0 30V18.7367C0 13.3986 1.26542 9.18149 3.79627 6.08541C6.36276 2.98932 10.0877 0.960854 14.9712 0V5.5516C11.3353 6.69039 8.8936 8.64769 7.646 11.4235C7.00438 12.8826 6.73704 14.395 6.84397 15.9609H15.2385V30H0ZM36.4827 5.5516C32.8824 6.6548 30.4585 8.64769 29.2109 11.5302C28.498 13.0605 28.2129 14.5374 28.3554 15.9609H36.75V30H21.5115V18.7367C21.5115 13.3274 22.8125 9.09253 25.4147 6.03203C28.0525 2.97153 31.7418 0.960854 36.4827 0V5.5516Z" fill="currentColor"/>
+    </svg>
+    <p class="u-feature-quote__text">{{ quote }}</p>
+  </blockquote>
+  {% if name or role %}
+    <figcaption class="u-feature-quote__attribution">
+      {% if avatar %}
+        <img src="{{ avatar }}" width="72" alt="{{ name }}" class="u-feature-quote__avatar">
+      {% endif %}
+      <div>
+        {% if name %}
+          <p class="u-feature-quote__name">{{ name }}</p>
+        {% endif %}
+        {% if role %}
+          <p class="u-feature-quote__role">{{ role }}</p>
+        {% endif %}
+      </div>
+    </figcaption>
+  {% endif %}
+</figure>
+{% endmacro %}

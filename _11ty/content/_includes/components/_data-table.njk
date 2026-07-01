@@ -1,0 +1,32 @@
+{#
+  Data Table
+  A horizontally scrollable table with a scroll-shadow fade effect.
+
+  columns  array   Array of column header strings.
+  rows     array   Array of row arrays, each containing cell value strings.
+  caption  string  Optional. Accessible label for the table region. Default: 'Scrollable data table'.
+
+  {{ dataTable(["Name", "Role"], [["Alice Johnson", "Lead Designer"]]) }}
+#}
+{% macro dataTable(columns, rows, caption="Scrollable data table") %}
+<div class="u-data-table-wrapper" role="region" aria-label="{{ caption }}" tabindex="0">
+  <table class="u-data-table">
+    <thead>
+      <tr>
+        {% for column in columns %}
+          <th scope="col">{{ column }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+        <tr>
+          {% for cell in row %}
+            <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}

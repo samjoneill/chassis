@@ -1,0 +1,11 @@
+{#
+  Hint
+  A small helper text element displayed below a form label.
+
+  text  string  The hint text.
+
+  {{ hint("Enter your number in international format.") }}
+#}
+{% macro hint(text) %}
+<p class="u-hint">{{ text }}</p>
+{% endmacro %}

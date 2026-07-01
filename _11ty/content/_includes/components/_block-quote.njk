@@ -1,0 +1,13 @@
+{#
+  Block Quote
+  An inline quotation with a branded left border.
+
+  quote  string  The quoted text.
+
+  {{ blockQuote("Design is not just what it looks like. Design is how it works.") }}
+#}
+{% macro blockQuote(quote) %}
+<blockquote class="u-block-quote">
+  <p>{{ quote }}</p>
+</blockquote>
+{% endmacro %}

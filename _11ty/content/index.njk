@@ -1,0 +1,33 @@
+---
+title: Home
+---
+{% extends "layouts/default.njk" %}
+{% from "components/_hero.njk" import hero %}
+{% from "components/_usp.njk" import usp %}
+{% from "components/_text-callout.njk" import textCallout %}
+{% from "components/_link.njk" import link %}
+
+{% block main %}
+  {{ hero(
+    "A starter framework for front-end projects",
+    lead="Built around a Gulp-based CSS/JS pipeline using CUBE CSS, with an Eleventy site scaffolded straight out of the box.",
+    image="images/placeholder-article.svg",
+    imageWidths=[800, 1440, 2000],
+    actionText="Browse articles",
+    actionHref="/articles/"
+  ) }}
+
+  <div class="wrapper flow">
+    {{ usp("No hidden fees", "Our pricing is fully transparent. What you see is what you pay.") }}
+    {{ usp("Fast to customise", "Every component here is a plain Nunjucks macro — edit the markup directly.") }}
+    {{ usp("Accessible by default", "Interactive components ship with the ARIA attributes they need.") }}
+
+    {{ textCallout(
+      "Every component, in one place",
+      "See all 30 ported components rendered together on the preview page.",
+      actionText="View component preview",
+      actionHref="/components-preview/",
+      style="brand"
+    ) }}
+  </div>
+{% endblock %}

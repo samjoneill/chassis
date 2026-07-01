@@ -1,0 +1,39 @@
+{% from "components/_icon.njk" import icon %}
+
+{#
+  Button
+  A styled button element with an arrow icon. Pass `href` to render as a link instead.
+
+  label    string   The button label.
+  variant  string   Optional. Visual style. One of: primary, outline. Default: primary.
+  size     string   Optional. Button size. One of: large, small. Default: large.
+  ghost    boolean  Optional. Renders a transparent ghost variant. Default: false.
+  href     string   Optional. When set, renders an <a> element instead of <button>.
+  type     string   Optional. HTML button type (ignored when href is set). One of: button, submit, reset. Default: button.
+
+  {{ button(label="Get in touch", variant="primary", type="submit") }}
+
+  {{ button(label="Learn more", href=article.url) }}
+#}
+{% macro button(label, variant="primary", size="large", ghost=false, href="", type="button") %}
+{% if href %}
+<a href="{{ href }}"
+  class="u-button"
+  data-button-variant="{{ variant }}"
+  data-button-size="{{ size }}"
+  {% if ghost %}data-ghost-button{% endif %}>
+  {{ label }}
+  {{ icon("button-arrow") }}
+</a>
+{% else %}
+<button
+  type="{{ type }}"
+  class="u-button"
+  data-button-variant="{{ variant }}"
+  data-button-size="{{ size }}"
+  {% if ghost %}data-ghost-button{% endif %}>
+  {{ label }}
+  {{ icon("button-arrow") }}
+</button>
+{% endif %}
+{% endmacro %}

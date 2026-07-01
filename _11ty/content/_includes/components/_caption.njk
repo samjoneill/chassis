@@ -1,0 +1,11 @@
+{#
+  Caption
+  A small, muted text element for captions and supporting labels.
+
+  text  string  The caption text.
+
+  {{ caption("Figure 1: Quarterly revenue by region.") }}
+#}
+{% macro caption(text) %}
+<p class="u-caption">{{ text }}</p>
+{% endmacro %}

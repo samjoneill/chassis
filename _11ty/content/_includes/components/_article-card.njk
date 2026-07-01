@@ -1,0 +1,57 @@
+{% from "components/_link.njk" import link %}
+
+{#
+  Article Card
+  A card component for linking to articles or news items.
+
+  image          string  Path to a local source image.
+  imageWidths    array   Array of widths to generate for the srcset.
+  imageSizes     string  Optional. The `sizes` attribute for the image.
+  imageAlt       string  Optional. Alt text.
+  heading        string  Card heading.
+  layout         string  Optional. Card layout. One of: standard, wide. Default: standard.
+  mode           string  Optional. Content treatment. One of: open, inset-light, inset-dark. Default: open.
+  imagePosition  string  Optional. Image position in wide layout. One of: start, end. Default: start.
+  meta           string  Optional. Metadata text (e.g. publication date).
+  body           string  Optional. Short description text.
+  actionText     string  Optional. Label for the action link.
+  actionHref     string  Optional. URL for the action link. Default: #.
+
+  {{ articleCard(article.image, [400, 800], "(min-width: 40rem) 50vw, 100vw", "", article.title, meta=article.date, body=article.summary, actionText="Read more", actionHref=article.url) }}
+#}
+{% macro articleCard(image, imageWidths, imageSizes="", imageAlt="", heading="", layout="standard", mode="open", imagePosition="start", meta="", body="", actionText="", actionHref="#") %}
+{% set imageEl %}
+  <div class="u-article-card__image-wrapper">
+    <img src="{{ image }}" eleventy:widths="{{ imageWidths | join(',') }}" sizes="{{ imageSizes }}" alt="{{ imageAlt }}" class="u-article-card__image">
+  </div>
+{% endset %}
+{% set contentEl %}
+  <div class="u-article-card__content">
+    {% if meta %}
+      <p class="u-article-card__meta">{{ meta }}</p>
+    {% endif %}
+    <h3 class="u-article-card__heading">{{ heading }}</h3>
+    {% if body %}
+      <p class="u-article-card__body">{{ body }}</p>
+    {% endif %}
+    {% if actionText %}
+      {{ link(actionText, actionHref) }}
+    {% endif %}
+  </div>
+{% endset %}
+<article class="u-article-card"
+  data-article-card-mode="{{ mode }}"
+  {% if layout == "wide" %}
+  data-article-card-layout="wide"
+  data-article-card-img-pos="{{ imagePosition }}"
+  {% endif %}>
+
+  {% if layout == "wide" and imagePosition == "end" %}
+    {{ contentEl | safe }}
+    {{ imageEl | safe }}
+  {% else %}
+    {{ imageEl | safe }}
+    {{ contentEl | safe }}
+  {% endif %}
+</article>
+{% endmacro %}

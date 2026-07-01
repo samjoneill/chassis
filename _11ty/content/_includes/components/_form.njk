@@ -1,0 +1,65 @@
+{% from "components/_text-input.njk" import textInput %}
+{% from "components/_select.njk" import select %}
+{% from "components/_textarea.njk" import textarea %}
+{% from "components/_button.njk" import button %}
+{% from "components/_field-group.njk" import fieldGroup %}
+{% from "components/_radio.njk" import radio %}
+{% from "components/_checkbox.njk" import checkbox %}
+
+{#
+  Form
+  A complete contact form demonstrating all form component compositions.
+  Adapt field structure and IDs to suit your specific form requirements.
+
+  No parameters — fields are hardcoded. Replace with your own field includes as needed.
+
+  {{ form() }}
+#}
+{% macro form() %}
+<form class="u-form" novalidate>
+
+  {{ textInput("full-name", "Full name", inputType="text") }}
+
+  {{ textInput("email", "Email address", inputType="email") }}
+
+  {{ textInput("phone", "Phone number", inputType="tel", hintText="Optional") }}
+
+  {{ select("country", "Country", [
+    { value: "", label: "Select a country…" },
+    { value: "gb", label: "United Kingdom" },
+    { value: "us", label: "United States" },
+    { value: "ca", label: "Canada" },
+    { value: "au", label: "Australia" },
+    { value: "de", label: "Germany" }
+  ]) }}
+
+  {% call fieldGroup("Preferred contact method") %}
+    {{ radio("contact-email", "Email", name="contact-method") }}
+    {{ radio("contact-phone", "Phone", name="contact-method") }}
+    {{ radio("contact-post", "Post", name="contact-method") }}
+  {% endcall %}
+
+  {{ select("category", "Category", [
+    { value: "", label: "Select a category…" },
+    { value: "general", label: "General enquiry" },
+    { value: "support", label: "Technical support" },
+    { value: "billing", label: "Billing" },
+    { value: "feedback", label: "Feedback" }
+  ]) }}
+
+  {{ textInput("subject", "Subject", inputType="text") }}
+
+  {{ textarea("message", "Message", hintText="Maximum 500 characters") }}
+
+  {% call fieldGroup("Consent") %}
+    {{ checkbox("consent-terms", "I agree to the terms and conditions") }}
+    {{ checkbox("consent-marketing", "Send me occasional product updates and news") }}
+  {% endcall %}
+
+  <div class="u-form__actions">
+    {{ button(label="Submit", variant="primary", size="large", type="submit") }}
+    {{ button(label="Cancel", variant="primary", ghost=true, size="large") }}
+  </div>
+
+</form>
+{% endmacro %}

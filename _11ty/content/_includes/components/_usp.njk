@@ -1,0 +1,22 @@
+{% from "components/_icon.njk" import icon %}
+
+{#
+  USP (Unique Selling Point)
+  A tick icon paired with a heading and description for highlighting key benefits.
+
+  heading      string  The USP heading.
+  description  string  The supporting description text.
+
+  {{ usp("No hidden fees", "Our pricing is fully transparent. What you see is what you pay.") }}
+#}
+{% macro usp(heading, description) %}
+<div class="u-usp">
+  <div class="u-usp__icon">
+    {{ icon("tick") }}
+  </div>
+  <div class="u-usp__content">
+    <h3 class="u-usp__heading">{{ heading }}</h3>
+    <p class="u-usp__description">{{ description }}</p>
+  </div>
+</div>
+{% endmacro %}

@@ -1,0 +1,15 @@
+{% from "components/_icon.njk" import icon %}
+
+{#
+  Link
+  A standalone action link with an arrow icon.
+  For inline body-copy links, use a plain <a> element — global styles apply automatically.
+
+  text  string  The visible link text.
+  href  string  Optional. The link URL. Default: #.
+
+  {{ link("Read the full report", article.url) }}
+#}
+{% macro link(text, href="#") %}
+<a href="{{ href }}" class="u-link">{{ icon("arrow-right") }}<span>{{ text }}</span></a>
+{% endmacro %}

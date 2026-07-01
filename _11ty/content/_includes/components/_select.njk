@@ -1,0 +1,35 @@
+{#
+  Select
+  A custom-styled select input with label and optional hint and error state.
+
+  id            string   The input id and name attribute.
+  labelText     string   The visible label text.
+  items         array    Array of objects with `value` (string) and `label` (string).
+  hintText      string   Optional. Supporting hint text shown below the label.
+  disabled      boolean  Optional. Disables the input. Default: false.
+  hasError      boolean  Optional. Applies error styles. Default: false.
+  errorMessage  string   Optional. Error message shown when hasError is true. Default: 'Error message text'.
+
+  {{ select("country", "Country", [{ value: "gb", label: "United Kingdom" }]) }}
+#}
+{% macro select(id, labelText, items, hintText="", disabled=false, hasError=false, errorMessage="Error message text") %}
+<div>
+  <label class="u-label" for="{{ id }}">{{ labelText }}</label>
+  {% if hintText %}
+    <p class="u-hint">{{ hintText }}</p>
+  {% endif %}
+  <div class="u-select{% if hasError %} u-select--error{% endif %}">
+    <select
+      id="{{ id }}"
+      name="{{ id }}"
+      {% if disabled %}disabled{% endif %}>
+      {% for item in items %}
+        <option value="{{ item.value }}">{{ item.label }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% if hasError %}
+    <p class="u-select-error">{{ errorMessage }}</p>
+  {% endif %}
+</div>
+{% endmacro %}

@@ -1,0 +1,24 @@
+{#
+  Field Group
+  A fieldset wrapper for grouping related inputs (checkboxes, radios).
+  Use with {% call %} to pass child inputs.
+
+  legendText  string  The visible group label, rendered as a <legend>.
+  hintText    string  Optional. Supporting hint text shown below the legend.
+
+  {% call fieldGroup("Preferred contact method", "Select one option.") %}
+    {{ radio("contact-email", "Email", name="contact-method") }}
+    {{ radio("contact-phone", "Phone", name="contact-method") }}
+  {% endcall %}
+#}
+{% macro fieldGroup(legendText, hintText="") %}
+<fieldset class="u-field-group">
+  <legend class="u-label">{{ legendText }}</legend>
+  {% if hintText %}
+    <p class="u-hint">{{ hintText }}</p>
+  {% endif %}
+  <div class="u-field-group__options">
+    {{ caller() }}
+  </div>
+</fieldset>
+{% endmacro %}

@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build": "npm run clean:eleventy && gulp build && eleventy",
+    "dev": "concurrently -n eleventy,gulp -c blue,green \"eleventy --serve\" \"gulp watchFiles\"",
+    "clean:eleventy": "node ./scripts/clean-eleventy-output.js"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.0",
+    "@11ty/eleventy-img": "^6.0.0",
+    "concurrently": "^9.0.0"
+  }
+}
