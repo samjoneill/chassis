@@ -1,0 +1,16 @@
+{#
+  Statistic
+  A prominent figure and description pair for highlighting key data points.
+
+  figureText   string  The main statistic value (e.g. '94%' or '2,400+').
+  description  string  A short label describing the statistic.
+  style        string  Optional. Visual style. One of: default, brand, dark. Default: default.
+
+  {{ statistic("94%", "Client satisfaction rate", style="brand") }}
+#}
+{% macro statistic(figureText, description, style="default") %}
+<div class="u-statistic" data-statistic-style="{{ style }}">
+  <p class="u-statistic__figure">{{ figureText }}</p>
+  <p class="u-statistic__description">{{ description }}</p>
+</div>
+{% endmacro %}

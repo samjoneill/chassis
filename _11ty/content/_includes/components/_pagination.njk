@@ -1,0 +1,40 @@
+{% from "components/_icon.njk" import icon %}
+
+{#
+  Pagination
+  A navigation component for paging through a list of results.
+
+  pages        number  Total number of pages.
+  currentPage  number  The currently active page number (1-based).
+  prevHref     string  Optional. URL for the previous page link. Default: #.
+  nextHref     string  Optional. URL for the next page link. Default: #.
+  pageHrefs    object  Optional. Object keyed by page number mapping to page URLs.
+
+  {{ pagination(pageInfo.totalPages, pageInfo.currentPage, pageInfo.prevUrl, pageInfo.nextUrl, pageInfo.pageUrls) }}
+#}
+{% macro pagination(pages, currentPage, prevHref="#", nextHref="#", pageHrefs={}) %}
+<nav class="u-pagination" aria-label="Pagination">
+  <ol class="u-pagination__list">
+    <li>
+      <a href="{{ prevHref }}" class="u-pagination__prev">
+        {{ icon("arrow-left") }}
+        <span>Previous</span>
+      </a>
+    </li>
+    {% for i in range(1, pages + 1) %}
+      <li>
+        <a
+          href="{{ pageHrefs[i] if pageHrefs[i] else '#' }}"
+          class="u-pagination__link"
+          {% if i == currentPage %}aria-current="page"{% endif %}>{{ i }}</a>
+      </li>
+    {% endfor %}
+    <li>
+      <a href="{{ nextHref }}" class="u-pagination__next">
+        <span>Next</span>
+        {{ icon("arrow-right") }}
+      </a>
+    </li>
+  </ol>
+</nav>
+{% endmacro %}

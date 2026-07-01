@@ -1,0 +1,15 @@
+{#
+  Ordered List
+  A numbered list with branded marker colour.
+
+  items  array  Array of strings, one per list item.
+
+  {{ orderedList(["Submit the enquiry form.", "We will be in touch within two working days."]) }}
+#}
+{% macro orderedList(items) %}
+<ol class="u-ordered-list">
+  {% for item in items %}
+    <li class="u-ordered-list__item">{{ item }}</li>
+  {% endfor %}
+</ol>
+{% endmacro %}

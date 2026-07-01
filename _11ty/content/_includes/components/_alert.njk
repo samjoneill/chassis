@@ -1,0 +1,20 @@
+{% from "components/_icon.njk" import icon %}
+
+{#
+  Alert
+  An inline status message with a coloured left border and icon.
+
+  text   string  The alert message.
+  level  string  Optional. Severity level. One of: info, warning, success, failure. Default: info.
+
+  {{ alert("Your changes have been saved.", level="success") }}
+#}
+{% macro alert(text, level="info") %}
+{% set iconId = "caution" if level == "warning" else level %}
+<div class="u-alert" data-alert-level="{{ level }}" role="alert">
+  <span class="u-alert__icon">
+    {{ icon(iconId) }}
+  </span>
+  <p class="u-alert__text">{{ text }}</p>
+</div>
+{% endmacro %}

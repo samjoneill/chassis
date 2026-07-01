@@ -1,0 +1,24 @@
+{% from "components/_icon.njk" import icon %}
+
+{#
+  Accordion
+  Expandable disclosure sections using the native <details> element.
+  No JavaScript required.
+
+  items  array  Array of objects, each with `title` (string) and `content` (string).
+
+  {{ accordion([{ title: "First section", content: "Content for the first section." }]) }}
+#}
+{% macro accordion(items) %}
+<div class="u-accordion">
+  {% for item in items %}
+  <details class="u-accordion__item">
+    <summary class="u-accordion__header">
+      {{ item.title }}
+      {{ icon("chevron-down") }}
+    </summary>
+    <div class="u-accordion__content">{{ item.content }}</div>
+  </details>
+  {% endfor %}
+</div>
+{% endmacro %}

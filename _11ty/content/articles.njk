@@ -1,0 +1,29 @@
+---
+title: Articles
+---
+{% extends "layouts/default.njk" %}
+{% from "components/_article-card.njk" import articleCard %}
+
+{% block header %}
+  <div class="wrapper">
+    <h1>{{ title }}</h1>
+  </div>
+{% endblock %}
+
+{% block main %}
+  <div class="wrapper">
+    {% for article in collections.articles %}
+      {{ articleCard(
+        article.data.image,
+        [400, 800],
+        "(min-width: 40rem) 50vw, 100vw",
+        article.data.title,
+        article.data.title,
+        meta=article.data.date | date,
+        body=article.data.summary,
+        actionText="Read more",
+        actionHref=article.url
+      ) }}
+    {% endfor %}
+  </div>
+{% endblock %}

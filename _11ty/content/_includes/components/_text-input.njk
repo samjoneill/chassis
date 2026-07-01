@@ -1,0 +1,33 @@
+{#
+  Text Input
+  A single-line text input with label and optional hint and error state.
+
+  id                string   The input id and name attribute.
+  labelText         string   The visible label text.
+  inputType         string   Optional. HTML input type (text, email, tel, etc.). Default: text.
+  inputPlaceholder  string   Optional. Placeholder text for the input.
+  hintText          string   Optional. Supporting hint text shown below the label.
+  disabled          boolean  Optional. Disables the input. Default: false.
+  hasError          boolean  Optional. Applies error styles. Default: false.
+  errorMessage      string   Optional. Error message shown when hasError is true. Default: 'Error message text'.
+
+  {{ textInput("email", "Email address", inputType="email") }}
+#}
+{% macro textInput(id, labelText, inputType="text", inputPlaceholder="", hintText="", disabled=false, hasError=false, errorMessage="Error message text") %}
+<div>
+  <label class="u-label" for="{{ id }}">{{ labelText }}</label>
+  {% if hintText %}
+    <p class="u-hint">{{ hintText }}</p>
+  {% endif %}
+  <input
+    class="u-text-input{% if hasError %} u-text-input--error{% endif %}"
+    type="{{ inputType }}"
+    id="{{ id }}"
+    name="{{ id }}"
+    {% if inputPlaceholder %}placeholder="{{ inputPlaceholder }}"{% endif %}
+    {% if disabled %}disabled{% endif %}>
+  {% if hasError %}
+    <p class="u-text-input-error">{{ errorMessage }}</p>
+  {% endif %}
+</div>
+{% endmacro %}

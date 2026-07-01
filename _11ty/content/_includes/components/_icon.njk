@@ -1,0 +1,17 @@
+{#
+  Icon
+  Renders a single icon from the SVG sprite.
+
+  id       string  The icon ID corresponding to a symbol in sprite.svg.
+  classes  string  Optional. Additional CSS classes on the SVG element.
+  size     string  Optional. Size modifier appended as `icon--{size}` class.
+
+  {{ icon("arrow-right") }}
+#}
+{% macro icon(id, classes="", size="") %}
+{% set extraClass = classes %}
+{% if size %}{% set extraClass = extraClass ~ " icon--" ~ size %}{% endif %}
+<svg role="img" aria-hidden="true" focusable="false" class="icon icon--{{ id }} icon--m {{ extraClass }}">
+  <use xlink:href="/assets/images/icons/sprite.svg#{{ id }}"></use>
+</svg>
+{% endmacro %}

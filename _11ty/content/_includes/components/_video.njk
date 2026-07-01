@@ -1,0 +1,26 @@
+{#
+  Video
+  A responsive YouTube embed using the privacy-enhanced nocookie domain,
+  wrapped in a <figure> with an optional caption.
+
+  videoId  string  The YouTube video ID (the part after ?v= in the watch URL).
+  caption  string  Optional. Caption text, rendered as a <figcaption>.
+
+  {{ video(article.videoId, article.videoCaption) }}
+#}
+{% macro video(videoId, caption="") %}
+<figure class="u-video">
+  <div class="u-video__embed-wrapper">
+    <iframe
+      class="u-video__embed"
+      src="https://www.youtube-nocookie.com/embed/{{ videoId }}"
+      title="Embedded YouTube video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      loading="lazy"></iframe>
+  </div>
+  {% if caption %}
+    <figcaption class="u-caption">{{ caption }}</figcaption>
+  {% endif %}
+</figure>
+{% endmacro %}

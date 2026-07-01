@@ -1,0 +1,23 @@
+{% from "components/_button.njk" import button %}
+
+{#
+  Text Callout
+  A boxed callout with a heading, body text, and optional action link.
+
+  heading     string  The callout heading.
+  body        string  The callout body text.
+  style       string  Optional. Visual style. One of: default, dark, brand. Default: default.
+  actionText  string  Optional. Label for the action link. Omit to hide the link.
+  actionHref  string  Optional. URL for the action link. Default: #.
+
+  {{ textCallout("Did you know?", "We offer a free consultation.", actionText="Book a consultation", actionHref="/contact", style="brand") }}
+#}
+{% macro textCallout(heading, body, style="default", actionText="", actionHref="#") %}
+<div class="u-text-callout" data-text-callout-style="{{ style }}">
+  {% if heading %}<p class="u-text-callout__heading">{{ heading }}</p>{% endif %}
+  {% if body %}<p class="u-text-callout__body">{{ body }}</p>{% endif %}
+  {% if actionText %}
+    {{ button(label=actionText, href=actionHref) }}
+  {% endif %}
+</div>
+{% endmacro %}

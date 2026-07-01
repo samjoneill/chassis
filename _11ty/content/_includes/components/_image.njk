@@ -1,0 +1,20 @@
+{#
+  Image
+  A responsive image wrapped in a <figure>, with an optional caption.
+
+  src      string  Path to a local source image, relative to the content/ directory.
+  widths   array   Array of widths to generate for the srcset.
+  sizes    string  Optional. The `sizes` attribute. Required when multiple widths are provided.
+  alt      string  Optional. Alt text.
+  caption  string  Optional. Caption text, rendered as a <figcaption>.
+
+  {{ imageComponent("images/article.jpg", [800, 1600], "(min-width: 60rem) 800px, 100vw", "", article.imageCaption) }}
+#}
+{% macro imageComponent(src, widths, sizes="", alt="", caption="") %}
+<figure class="u-image">
+  <img src="{{ src }}" eleventy:widths="{{ widths | join(',') }}" sizes="{{ sizes }}" alt="{{ alt }}" class="u-image__media">
+  {% if caption %}
+    <figcaption class="u-caption">{{ caption }}</figcaption>
+  {% endif %}
+</figure>
+{% endmacro %}
