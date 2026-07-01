@@ -1,0 +1,17 @@
+.prose > * + * {
+  margin-block-start: var(--space-s);
+}
+
+.prose img {
+  width: auto;
+}
+
+.prose > * + h2,
+.prose > * + h3 {
+  margin-block-start: var(--space-l);
+}
+
+.prose > * + h4,
+.prose > * + h5 {
+  margin-block-start: var(--space-m);
+}
