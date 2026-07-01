@@ -1,5 +1,5 @@
 .u-hero {
-  --hero-bg-color: var(--color-brand);
+  --hero-bg-color: var(--color-brand--shade-60);
   --hero-text: var(--color-light);
   --hero-action-color: var(--color-brand--tint-90, #f1edfd);
   background-color: var(--hero-bg-color);
