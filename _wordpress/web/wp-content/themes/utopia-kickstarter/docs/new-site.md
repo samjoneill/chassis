@@ -1,6 +1,6 @@
 # Starting a new site
 
-New WordPress sites start from [Chassis](https://github.com/samjoneill/chassis): run [`initproject`](https://github.com/samjoneill/commands) in an empty project folder and choose `wordpress`. The script does everything below. The steps are written out so you know what it did, and so you can do the same by hand.
+New WordPress sites start from [Chassis](https://github.com/samjoneill/chassis): run [`initproject`](https://github.com/samjoneill/commands) in an empty project folder and choose `wordpress`. Pass it your ACF PRO licence key (see [The ACF PRO licence key](#the-acf-pro-licence-key)). The script does everything below. The steps are written out so you know what it did, and so you can do the same by hand.
 
 The theme is a starter, copied into each project and changed to suit. It is not a parent theme, so changes on one site don't reach others. Improvements worth keeping go back into `_wordpress` in Chassis.
 
@@ -62,13 +62,23 @@ ddev wp plugin activate advanced-custom-fields-pro
 ddev wp plugin install classic-editor --activate
 ```
 
-Composer needs your ACF PRO licence key, set up once per machine (the password is a site URL the licence is active for):
+### The ACF PRO licence key
+
+Composer needs your ACF PRO licence key to download the plugin: the key is the username for ACF's repo, and the URL of a site the licence is active for (including `https://`) is the password. Nothing is stored in the project. With `initproject`, pass both as environment variables:
 
 ```bash
-composer config --global http-basic.connect.advancedcustomfields.com <licence key> <licensed site URL>
+ACF_PRO_LICENSE=<licence key> ACF_PRO_URL=<licensed site URL> initproject
 ```
 
-Without it, install ACF PRO from its zip instead (`ddev wp plugin install <path to zip> --activate`).
+The script passes them to Composer, and adds the key to `wp-config.php` (not committed) so the licence is also activated in WordPress.
+
+By hand, or to update ACF PRO later, pass the same credentials to Composer with `COMPOSER_AUTH`:
+
+```bash
+COMPOSER_AUTH='{"http-basic":{"connect.advancedcustomfields.com":{"username":"<licence key>","password":"<licensed site URL>"}}}' composer update
+```
+
+To activate the licence in WordPress by hand, add `define( 'ACF_PRO_LICENSE', '<licence key>' );` to `wp-config.php`, or enter it in **ACF → Updates**. Servers use the `wp-config.php` method; see [deploying.md](deploying.md).
 
 ## 5. Activate the theme and sync ACF
 
