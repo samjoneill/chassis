@@ -1,8 +1,8 @@
 <?php
 /**
- * Image helpers — ports of templates/macros/image.twig and imageSet.twig.
+ * Image helpers: output attachments at the registered image sizes (see
+ * inc/setup.php).
  *
- * Craft transforms become registered image sizes (see inc/setup.php).
  * WordPress generates srcset automatically from all sizes sharing the
  * original's aspect ratio.
  */

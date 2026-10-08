@@ -1,6 +1,6 @@
 <?php
 /**
- * Single posts and pages — port of _pages/_entry.twig.
+ * Single posts and pages, of any post type: the content, then page components.
  */
 
 get_header();

@@ -1,6 +1,6 @@
 <?php
 /**
- * Opening layout — port of _layouts/skeleton.twig and the top of _layouts/default.twig.
+ * Opening layout: the document head, site header and the start of <main>.
  *
  * Favicons come from Settings → General → Site Icon, the RSS link from
  * automatic-feed-links, and <title> from title-tag support.

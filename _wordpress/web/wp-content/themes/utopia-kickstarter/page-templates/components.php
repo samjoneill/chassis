@@ -3,7 +3,7 @@
  * Template Name: Component library
  *
  * Renders every component with its documented example args — the WordPress
- * stand-in for Storybook / preview-skeleton.twig. Image components use the
+ * equivalent of a component preview page. Image components use the
  * most recent image in the media library when one exists.
  */
 

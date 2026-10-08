@@ -1,6 +1,6 @@
 <?php
 /**
- * Closing layout — port of the bottom of _layouts/default.twig and skeleton.twig.
+ * Closing layout: ends <main>, then the site footer and wp_footer().
  */
 ?>
     </main>

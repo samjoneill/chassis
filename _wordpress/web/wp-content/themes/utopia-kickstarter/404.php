@@ -1,6 +1,6 @@
 <?php
 /**
- * Not found — port of _errors/404.twig.
+ * Not found page.
  */
 
 get_header();

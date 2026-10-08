@@ -16,7 +16,7 @@ add_action( 'after_setup_theme', function () {
 	] );
 
 	/*
-	 * Image sizes mirror the Craft transforms used in the component docs.
+	 * Image sizes used by the components (see inc/images.php).
 	 * WordPress builds srcset from every size sharing the original's
 	 * aspect ratio, so pass the smallest sensible size as `image_size`.
 	 */
@@ -27,7 +27,7 @@ add_action( 'after_setup_theme', function () {
 } );
 
 /**
- * Output generated sizes as WebP (Craft transforms used format: 'webp').
+ * Output generated sizes as WebP.
  */
 add_filter( 'image_editor_output_format', function ( $formats ) {
 	$formats['image/jpeg'] = 'image/webp';

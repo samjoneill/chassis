@@ -1,6 +1,6 @@
 <?php
 /**
- * Front page — port of _pages/index.twig.
+ * Front page.
  */
 
 get_header();
