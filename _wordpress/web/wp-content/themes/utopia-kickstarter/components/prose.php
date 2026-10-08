@@ -16,6 +16,6 @@ if ( empty( $args['content'] ) ) {
   return;
 }
 ?>
-<div class="u-prose prose" data-prose-width="<?php echo esc_attr( $args['width'] ?? 'default' ); ?>">
+<div class="prose" data-prose-width="<?php echo esc_attr( $args['width'] ?? 'default' ); ?>">
   <?php echo wp_kses_post( $args['content'] ); ?>
 </div>
