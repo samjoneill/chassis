@@ -15,6 +15,14 @@ add_filter( 'acf/settings/load_json', function ( array $paths ) {
 } );
 
 /**
+ * Only show ACF's admin (field groups, post types) on local and development
+ * sites. Field groups deploy with the theme, so edits made on staging or
+ * production would be overwritten by the next deploy. WordPress treats a site
+ * without WP_ENVIRONMENT_TYPE as production.
+ */
+add_filter( 'acf/settings/show_admin', fn() => in_array( wp_get_environment_type(), [ 'local', 'development' ], true ) );
+
+/**
  * Render each row of a flexible content field through layouts/{layout}.php.
  *
  * @param string $field   Flexible content field name.

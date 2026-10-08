@@ -13,6 +13,8 @@ It comes from the `_wordpress` skeleton in [Chassis](https://github.com/samjonei
 
 Run `initproject` and choose `wordpress`. See [docs/new-site.md](docs/new-site.md) for what it does and how to do the same by hand. The theme needs **ACF PRO** and **Classic Editor**.
 
+To put the site on a staging or production server, see [docs/deploying.md](docs/deploying.md).
+
 ## Commands
 
 Run from the project root:
@@ -36,7 +38,7 @@ Paths are relative to this theme, except `src/`, which is at the project root.
 | `components/*.php` | One file per design component |
 | `layouts/` | One file per ACF "Components" layout, mapping its fields onto the matching component |
 | `acf-json/` | ACF field groups, kept in version control |
-| `docs/` | [Starting a new site](docs/new-site.md), [adding a component](docs/adding-a-component.md) |
+| `docs/` | [Starting a new site](docs/new-site.md), [deploying](docs/deploying.md), [adding a component](docs/adding-a-component.md) |
 | `inc/` | Theme setup, asset enqueueing, component helpers, image helpers, ACF integration |
 | `header.php` / `footer.php` | Page shell, with empty hook points (`utopia_kickstarter_header`, `utopia_kickstarter_footer`) |
 | `front-page.php`, `singular.php`, `index.php`, `404.php` | Page templates |
