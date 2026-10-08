@@ -1,0 +1,21 @@
+.u-prose {
+  --prose-max-width: 65ch;
+
+  max-inline-size: var(--prose-max-width);
+}
+
+.u-prose[data-prose-width='wide'] {
+  --prose-max-width: 90ch;
+}
+
+.u-prose[data-prose-width='full'] {
+  --prose-max-width: none;
+}
+
+.u-prose > :first-child {
+  margin-block-start: 0;
+}
+
+.u-prose > :last-child {
+  margin-block-end: 0;
+}

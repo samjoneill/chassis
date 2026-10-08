@@ -1,12 +1,12 @@
 
 # Chassis
 
-A starter framework for front-end projects, built around a Gulp-based CSS/JS pipeline using [CUBE CSS](https://cube.fyi/). Optionally bundles a pre-configured [Craft CMS](https://craftcms.com/) application skeleton, or an [Eleventy](https://www.11ty.dev/) static site skeleton, for projects that need one.
+A starter framework for front-end projects, built around a Gulp-based CSS/JS pipeline using [CUBE CSS](https://cube.fyi/). Optionally bundles a pre-configured [Craft CMS](https://craftcms.com/) application skeleton, an [Eleventy](https://www.11ty.dev/) static site skeleton, or a [WordPress](https://wordpress.org/) skeleton with the Utopia Kickstarter theme, for projects that need one.
 
 ## Requirements
 
 - Node.js (for the asset build)
-- [DDEV](https://ddev.com/) and [Composer](https://getcomposer.org/) 2.x — only needed if you install Craft
+- [DDEV](https://ddev.com/) and [Composer](https://getcomposer.org/) 2.x — only needed if you install Craft or WordPress
 
 ## Installation
 
@@ -17,11 +17,13 @@ What kind of project do you want to initialise?
 
   • craft     (Craft CMS + Twig templates)
   • eleventy  (Eleventy static site + Nunjucks templates)
+  • wordpress (WordPress + Utopia Kickstarter theme)
   • no        (holding page — asset pipeline only)
 ```
 
 - **craft** — merges the Craft application skeleton into the project root, copies `.env.example.dev` to `.env`, runs `composer install`, sets up DDEV (`ddev config` + `ddev start`), then automatically runs Craft's `ddev craft setup` wizard, which populates `CRAFT_APP_ID`, `CRAFT_SECURITY_KEY`, and `PRIMARY_SITE_URL` in `.env` and creates your admin account. It also installs the CKEditor plugin and opens the site in your browser.
 - **eleventy** — merges the Eleventy skeleton into the project root and adds its build scripts/dependencies to `package.json`. `npm run build` runs the Gulp build followed by Eleventy, writing pages to `web/` next to Gulp's `web/assets/` (Gulp must run first, since its `clean` step would otherwise wipe Eleventy's optimised images); `npm run dev` runs both concurrently with live reload.
+- **wordpress** — asks for the site name, theme slug and admin details, then merges the WordPress skeleton into the project root, renames the theme, points the Gulp build at the theme's `assets/` folder, and sets up DDEV. It installs WordPress core (not committed), ACF PRO (via Composer, falling back to a zip) and Classic Editor, activates the theme, syncs its ACF field groups, and creates a Home page, a Component library page and Primary/Footer menus. It prints the generated admin password, then opens the site in your browser. See [`initproject`'s README](https://github.com/samjoneill/commands) for the ACF PRO setup.
 - **no** — discards both skeletons entirely, leaving just the asset pipeline (`src/`, `gulpfile.js`, `package.json`) for a static holding page.
 
 Either way, the script also initialises Git, installs NPM packages, and runs an initial asset build.
@@ -52,6 +54,17 @@ Eleventy static site skeleton — only present if you choose to install Eleventy
 - `package.additions.json` — `scripts`/`devDependencies` merged into the root `package.json` at install time, then discarded
 - `scripts/clean-eleventy-output.js` — clears stale Eleventy output from `web/` on every build without touching `web/assets/`
 - `content/` — pages, a sample `articles` collection, a `content/images/` folder for content-authored images (article photos, avatars — kept separate from `src/img/`, which stays Gulp-only for icons/static UI assets), and `_includes/layouts/` + `_includes/components/`, the latter a Nunjucks port of every component in `_craft/templates/components/` (one macro per file, e.g. `{% from "components/_button.njk" import button %}`)
+
+### `_wordpress/`
+
+WordPress skeleton — only present if you choose to install WordPress, in which case its contents are moved into the project root during installation. Includes:
+
+- `.ddev/` — local development environment config (WordPress, docroot `web/`)
+- `composer.json` — ACF PRO from ACF's Composer repo, installed into `web/wp-content/plugins/`
+- `CLAUDE.md` — project guidance for Claude Code
+- `web/wp-content/themes/utopia-kickstarter/` — the Utopia Kickstarter classic theme: a PHP component for every component in `src/css/blocks/`, ACF flexible content layouts for adding them to pages (`acf-json/`, `layouts/`), and page templates. It's renamed to the project's slug at install. See its `README.md` and `docs/`.
+
+WordPress core isn't included. The installer downloads it, and `.gitignore` keeps everything in `web/` except the theme (and its built `assets/`) out of git.
 
 ### `src/`
 

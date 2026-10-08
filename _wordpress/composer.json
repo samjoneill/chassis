@@ -1,0 +1,21 @@
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://connect.advancedcustomfields.com"
+    }
+  ],
+  "require": {
+    "composer/installers": "^2.3"
+  },
+  "extra": {
+    "installer-paths": {
+      "web/wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
+}
